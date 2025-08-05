@@ -23,4 +23,24 @@ class AppTexts {
   static const email = "Email";
   static const password = "Password";
   static const confirmPassword = "Confirm password";
+
+  /// Company Login
+  static const welcome = "Welcome";
+  static const welcomeBackSubText = "Secure inventory control starts here.";
+
+
+  /// General Login
+  static const welcomeBack = "Welcome back";
+  static const genLoginSubText = "Select your role to login";
+  static const role = "Role";
+
+  ///Forgot Password
+  static const forgotPassword = "Forgot password?";
+  static const forgotPasswordSubText = "Enter your email address and we will send you a link to recover your password";
+
+
+  /// Reset Password
+  static const resetPassword = "Reset password";
+  static const resetPasswordSubText = "Please set your new password and confirm";
+
 }

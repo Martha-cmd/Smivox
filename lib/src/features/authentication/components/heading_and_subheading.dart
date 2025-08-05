@@ -24,6 +24,7 @@ class HeadingAndSubheading extends StatelessWidget {
         CommonMethods.appTexts(
           context,
           subHeading,
+          textAlign: TextAlign.center,
           fontSize: 14,
           color: AppColors.textGrey,
           letterspacing: -0.3,

@@ -46,7 +46,7 @@ class SmivoxButton extends StatelessWidget {
                   context,
                   text!,
                   color: colorText,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   fontSize: 16,
                 ),
             if (hasIcon && icon != null)

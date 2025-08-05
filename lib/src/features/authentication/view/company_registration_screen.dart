@@ -47,7 +47,11 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CommonMethods.appTexts(context, "Already have a ${AppTexts.companyName} account?", fontSize: 14),
-                            CommonMethods.appTexts(context, "Log in", color: Color(0xFF0311D7), fontWeight: FontWeight.w500),
+                            GestureDetector(
+                              onTap: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.companyLoginScreen),
+                              child: CommonMethods.appTexts(context, "Log in", color: Color(0xFF0311D7), fontWeight: FontWeight.w500),
+
+                            )
                           ],
                         ),
                         SmivoxButton(

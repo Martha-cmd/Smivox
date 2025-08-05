@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smivox_inventory_software/src/commons/common_methods.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_button.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_input_fields.dart';
 import 'package:smivox_inventory_software/src/res/app_strings.dart';
+import 'package:smivox_inventory_software/src/utils/route_path.dart';
 import '../../../commons/app_colors.dart';
 import '../components/heading_and_subheading.dart';
 
@@ -32,15 +34,14 @@ class _PersonalDetailsState extends State<PersonalDetailsScreen> {
                 Column(
                   spacing: 20,
                   children: [
-                    SmivoxInputFields(headText: AppTexts.firstName, labelColor: Colors.black, hintText: "Timothy", leadingIcon: Icon(CupertinoIcons.person, color: AppColors.inactiveGrey)),
+                    SmivoxInputFields(headText: AppTexts.firstName, labelColor: Colors.black, hintText: "Timothy", leadingIcon: Icon(CupertinoIcons.person, color: AppColors.inactiveGrey, size: 15)),
                     SmivoxInputFields(headText: AppTexts.lastName, labelColor: Colors.black, hintText: "Stone", leadingIcon: Icon(CupertinoIcons.person, color: AppColors.inactiveGrey)),
                     SmivoxInputFields(headText: AppTexts.email, labelColor: Colors.black, hintText: "timstone@gmail.com", leadingIcon: Icon(Icons.mail_outline_rounded, color: AppColors.inactiveGrey), suffixIcon: Icon(CupertinoIcons.chevron_down, size: 15)),
-                    SmivoxInputFields(headText: AppTexts.password, labelColor: Colors.black, hintText: "Enter a secure password", leadingIcon: Icon(CupertinoIcons.lock, color: AppColors.inactiveGrey), suffixIcon: Icon(CupertinoIcons.chevron_down, size: 15)),
-                    SmivoxInputFields(headText: AppTexts.confirmPassword, labelColor: Colors.black, hintText: "Confirm your password", leadingIcon: Icon(CupertinoIcons.lock, color: AppColors.inactiveGrey), suffixIcon: Icon(CupertinoIcons.chevron_down, size: 15)),
+                    SmivoxInputFields(headText: AppTexts.password, labelColor: Colors.black, hintText: "Enter a secure password", leadingIcon: Icon(CupertinoIcons.lock, color: AppColors.inactiveGrey), suffixIcon: Icon(CupertinoIcons.eye_slash, color: AppColors.inactiveGrey, size: 16)),
+                    SmivoxInputFields(headText: AppTexts.confirmPassword, labelColor: Colors.black, hintText: "Confirm your password", leadingIcon: Icon(CupertinoIcons.lock, color: AppColors.inactiveGrey), suffixIcon: Icon(CupertinoIcons.eye_slash, color: AppColors.inactiveGrey, size: 16)),
 
                     SizedBox(height: 10),
                     RichText(
-                      // textAlign: TextAlign.center,
                       text: TextSpan(
                         style: TextStyle(
                           fontSize: 14,
@@ -79,7 +80,10 @@ class _PersonalDetailsState extends State<PersonalDetailsScreen> {
                         ],
                       ),
                     ),
-                    SmivoxButton(text: "Create your account"),
+                    SmivoxButton(
+                        text: "Create your account",
+                        onTap: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.companyLoginScreen),
+                    ),
                   ],
                 )
               ],

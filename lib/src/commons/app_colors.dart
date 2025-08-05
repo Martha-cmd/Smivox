@@ -13,4 +13,6 @@ class AppColors {
    static const lightGrey = Color(0xFFBDBDBD);
    static const darkGrey = Color(0xFF1D1D1D);
    static const Color containerColor = Color(0xFF282828);
+   static const Color inactiveGrey = Color(0xFF656565);
+   static const Color inactiveInput = Color(0xFFA1A1A1);
 }

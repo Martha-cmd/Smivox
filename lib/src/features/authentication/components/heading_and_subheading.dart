@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../commons/app_colors.dart';
-import '../../commons/common_methods.dart';
+import '../../../commons/app_colors.dart';
+import '../../../commons/common_methods.dart';
 
 
 class HeadingAndSubheading extends StatelessWidget {
@@ -18,13 +18,15 @@ class HeadingAndSubheading extends StatelessWidget {
           context,
           heading,
           fontWeight: FontWeight.w600,
-          fontSize: 18,
+          fontSize: 20,
+          letterspacing: -0.5,
         ),
         CommonMethods.appTexts(
           context,
           subHeading,
           fontSize: 14,
           color: AppColors.textGrey,
+          letterspacing: -0.3,
         ),
       ],
     );

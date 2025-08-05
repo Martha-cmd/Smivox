@@ -31,6 +31,7 @@ class CommonMethods {
         TextStyle? style,
         Color? color,
         double? fontSize,
+        double? letterspacing,
         FontWeight? fontWeight,
         TextAlign? textAlign,
         int? maxLines,
@@ -53,7 +54,7 @@ class CommonMethods {
         fontFamily: "Poppins",
         decoration: decoration,
         fontStyle: fontstyle,
-        letterSpacing: -0.5,
+        letterSpacing: letterspacing,
       )
           : style.copyWith(
         fontFamily: "Poppins",

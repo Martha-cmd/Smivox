@@ -43,4 +43,10 @@ class AppTexts {
   static const resetPassword = "Reset password";
   static const resetPasswordSubText = "Please set your new password and confirm";
 
+  /// Bottom Bar
+  static const home = "Home";
+  static const pos = "POS";
+  static const inventory = "Inventory";
+  static const sales = "Sales";
+
 }

@@ -5,6 +5,8 @@ import 'package:smivox_inventory_software/src/commons/smivox_input_fields.dart';
 import 'package:smivox_inventory_software/src/features/authentication/components/heading_and_subheading.dart';
 import 'package:smivox_inventory_software/src/res/app_strings.dart';
 import '../../../commons/app_colors.dart';
+import '../../../commons/common_methods.dart';
+import '../../../utils/route_path.dart';
 
 
 class ResetPasswordScreen extends StatefulWidget {
@@ -33,9 +35,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 const SizedBox(height: 10),
                 SmivoxButton(
                   text: "Reset",
-                  // onTap: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.genLoginScreen),
+                  onTap: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.genLoginScreen),
                 ),
-
               ],
             ),
           ),

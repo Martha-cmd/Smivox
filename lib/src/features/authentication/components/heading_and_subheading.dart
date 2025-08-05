@@ -6,8 +6,11 @@ import '../../../commons/common_methods.dart';
 class HeadingAndSubheading extends StatelessWidget {
   final String heading;
   final String subHeading;
+  final Color? subHeadingColor;
+  final double? letterSpacing;
+  final double? fontSize;
 
-  const HeadingAndSubheading({super.key, required this.heading, required this.subHeading});
+  const HeadingAndSubheading({super.key, required this.heading, required this.subHeading, this.letterSpacing, this.subHeadingColor, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +28,9 @@ class HeadingAndSubheading extends StatelessWidget {
           context,
           subHeading,
           textAlign: TextAlign.center,
-          fontSize: 14,
-          color: AppColors.textGrey,
-          letterspacing: -0.3,
+          fontSize: fontSize ?? 14,
+          color: subHeadingColor ?? AppColors.textGrey,
+          letterspacing: letterSpacing ?? -0.3,
         ),
       ],
     );

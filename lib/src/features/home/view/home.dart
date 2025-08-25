@@ -3,7 +3,7 @@ import 'package:smivox_inventory_software/src/commons/common_methods.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_page_title.dart';
 import 'package:smivox_inventory_software/src/features/home/components/home_page_subheads.dart';
 import '../../../commons/app_colors.dart';
-import '../components/dashboard_compoenents.dart';
+import '../components/dashboard_components.dart';
 import '../components/home_graph.dart';
 import '../components/quick_actions.dart';
 

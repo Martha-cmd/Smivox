@@ -45,7 +45,7 @@ class _GenLoginScreenState extends State<GenLoginScreen> {
                 Spacer(),
                 SmivoxButton(
                   text: "Login",
-                  onTap: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.genLoginScreen),
+                  onTap: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.bottomBar),
                 ),
               ],
             ),

@@ -11,6 +11,6 @@ class InventoryScreen extends StatefulWidget {
 class _InventoryScreenState extends State<InventoryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Inventory Screen'));
+    return Center(child: Text('Inventory Screen', style: TextStyle(color: Colors.black),));
   }
 }

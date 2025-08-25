@@ -11,6 +11,6 @@ class POS extends StatefulWidget {
 class _POSState extends State<POS> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('POS Screen'));
+    return Center(child: Text('POS Screen', style: TextStyle(color: Colors.black),));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smivox_inventory_software/src/commons/smivox_app_bar.dart';
 import 'package:smivox_inventory_software/src/commons/common_methods.dart';
 import 'package:smivox_inventory_software/src/features/POS/view/pos_screen.dart';
 import 'package:smivox_inventory_software/src/features/home/view/home.dart';
@@ -37,7 +38,12 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: _buildCustomDrawer(),
+      backgroundColor: Color(0xFFECECEC),
+      appBar: CustomAppBar(
+        scaffoldKey: _scaffoldKey,
+      ),
+      endDrawer: _buildCustomDrawer(),
+      body: _pages[_selectedIndex],
       bottomNavigationBar: _buildCustomBottomBar(context),
     );
 
@@ -116,21 +122,63 @@ class _BottomBarState extends State<BottomBar> {
         child: ListView(
            padding: EdgeInsets.zero,
           children: [
-             DrawerHeader(
+             Container(
+               padding: const EdgeInsets.symmetric(horizontal: 20.0),
+               height: 111,
                  decoration: BoxDecoration(
-                    color: AppColors.primary,
+                    color: Color(0xFFFFD3BD),
                  ),
-               child: Column(
-                  children: [
-                     CommonMethods.appTexts(context, "Company Logo")
-                  ],
+               child: Padding(
+                 padding: const EdgeInsets.only(top: 40.0),
+                 child: Center(
+                   child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                       Image.asset(
+                         "assets/logo/logo.png",
+                         fit: BoxFit.contain,
+                         width: 100,
+                       ),
+                       GestureDetector(
+                         onTap: () => Navigator.pop(context),
+                           child: Icon(Icons.close, size: 16,))
+                      ],
+                   ),
+                 ),
                ),
-             )
+             ),
+             const SizedBox(height: 24),
+             ListTile(
+                leading: SvgPicture.asset("assets/drawer/warehouse.svg", width: 20),
+               title: CommonMethods.appTexts(context, "Add Products"),
+             ),
+             ListTile(
+                leading: SvgPicture.asset("assets/drawer/packaging-add.svg", width: 20),
+               title: CommonMethods.appTexts(context, "Add Categories"),
+             ),
+             ListTile(
+                leading: SvgPicture.asset("assets/drawer/user-circle.svg", width: 20),
+               title: CommonMethods.appTexts(context, "Customers"),
+             ),
+             ListTile(
+                leading: SvgPicture.asset("assets/drawer/user-polygon.svg", width: 20),
+               title: CommonMethods.appTexts(context, "Staff"),
+             ),
+             ListTile(
+                leading: SvgPicture.asset("assets/drawer/setting.svg", width: 20),
+               title: CommonMethods.appTexts(context, "Settings"),
+             ),
+             ListTile(
+              leading: SvgPicture.asset("assets/drawer/bar chart.svg", width: 20),
+              title: CommonMethods.appTexts(context, "Reports"),
+            ),
+             ListTile(
+              leading: SvgPicture.asset("assets/drawer/logout 01.svg", width: 20),
+              title: CommonMethods.appTexts(context, "Log out", color: AppColors.error, fontWeight: FontWeight.w600),
+            ),
           ],
         ),
      );
   }
-    
-    
- 
 }

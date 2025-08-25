@@ -19,7 +19,7 @@ class SmivoxButtonWithIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return  IntrinsicWidth(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: horPad ?? 10, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: horPad ?? 10, vertical: verPad ?? 10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
             border: Border.all(color: borderColor ?? AppColors.primary, width: 2),

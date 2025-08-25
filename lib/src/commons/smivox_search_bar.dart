@@ -5,7 +5,9 @@ import 'package:smivox_inventory_software/src/commons/common_methods.dart';
 
 
 class SmivoxSearchBar extends StatelessWidget {
-  const SmivoxSearchBar({super.key});
+  final String hintText;
+
+  const SmivoxSearchBar({super.key, required this.hintText});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class SmivoxSearchBar extends StatelessWidget {
             SvgPicture.asset('assets/svgs/search 02.svg'),
             CommonMethods.appTexts(
                 context,
-                "Search product",
+                hintText,
                 fontSize: 16,
                 color: AppColors.inactiveGrey,
             )

@@ -13,7 +13,25 @@ class InventoryDash extends StatelessWidget {
         spacing: 18,
         children: [
           InventoryDashContainer(dashName: "Total Products", dashNumber: "428,089",),
-          InventoryDashContainer(dashName: "Total Cost Price", dashNumber: "4,528,089",),
+          InventoryDashContainer(dashName: "Total Cost Price", widget: Row(
+            spacing: 5,
+            children: [
+              CommonMethods.appTexts(
+                context,
+                "NGN",
+                color: AppColors.success,
+                fontWeight: FontWeight.w600,
+                fontSize: 10,
+              ),
+              CommonMethods.appTexts(
+                context,
+                "4,528,059",
+                color: AppColors.primary,
+                fontWeight: FontWeight.w600,
+                fontSize: 20,
+              ),
+            ],
+          )),
           InventoryDashContainer(dashName: "Total Low Stock", dashNumber: "21",),
           InventoryDashContainer(dashName: "Total Out of Stock", dashNumber: "203",),
         ],
@@ -24,9 +42,10 @@ class InventoryDash extends StatelessWidget {
 
 class InventoryDashContainer extends StatelessWidget {
   final String dashName;
-  final String dashNumber;
+  final String? dashNumber;
+  final Widget? widget;
 
-  const InventoryDashContainer({super.key, required this.dashName, required this.dashNumber});
+  const InventoryDashContainer({super.key, required this.dashName, this.dashNumber, this.widget});
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +62,9 @@ class InventoryDashContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CommonMethods.appTexts(context, dashName, color: AppColors.inactiveGrey),
+          widget ??
           CommonMethods.appTexts(
-            context, dashNumber,
+            context, dashNumber!,
             color: AppColors.primary,
             fontWeight: FontWeight.w600,
             fontSize: 20,

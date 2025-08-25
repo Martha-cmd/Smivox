@@ -25,7 +25,7 @@ class POSItemBody extends StatelessWidget {
           ),
 
           const SizedBox(height: 10),
-          SmivoxSearchBar(),
+          SmivoxSearchBar(hintText: "Search product"),
 
           const SizedBox(height: 24),
           Column(

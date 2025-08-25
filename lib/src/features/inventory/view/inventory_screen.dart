@@ -123,7 +123,7 @@ class InventoryTable extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-              SmivoxSearchBar(),
+              SmivoxSearchBar(hintText: "Search products",),
               const SizedBox(height: 24),
               ListView.separated(
                 shrinkWrap: true,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_app_bar.dart';
 import 'package:smivox_inventory_software/src/commons/common_methods.dart';
+import 'package:smivox_inventory_software/src/commons/smivox_drawer.dart';
 import 'package:smivox_inventory_software/src/features/POS/view/pos_screen.dart';
 import 'package:smivox_inventory_software/src/features/home/view/home.dart';
+import 'package:smivox_inventory_software/src/features/inventory/view/empty_screen.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/inventory_screen.dart';
 import 'package:smivox_inventory_software/src/features/sales/view/sales_screen.dart';
 import 'package:smivox_inventory_software/src/res/app_strings.dart';
@@ -24,6 +26,7 @@ class _BottomBarState extends State<BottomBar> {
        HomeScreen(),
        POS(),
        InventoryScreen(),
+       // EmptyScreen(),
        SalesScreen(),
   ];
 
@@ -38,11 +41,11 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Color(0xFFECECEC),
+      backgroundColor: AppColors.mainBackground,
       appBar: CustomAppBar(
         scaffoldKey: _scaffoldKey,
       ),
-      endDrawer: _buildCustomDrawer(),
+      endDrawer: SmivoxDrawer(),
       body: _pages[_selectedIndex],
       bottomNavigationBar: _buildCustomBottomBar(context),
     );

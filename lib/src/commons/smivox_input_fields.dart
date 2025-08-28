@@ -42,7 +42,7 @@ class SmivoxInputFields extends StatefulWidget {
   final AutovalidateMode? autovalidateMode;
 
   const SmivoxInputFields({
-    Key? key,
+    super.key,
     this.controller,
     this.keyboardType,
     this.enabled,
@@ -70,7 +70,7 @@ class SmivoxInputFields extends StatefulWidget {
     this.labelColor,
     this.focusNode,
     this.contentPadding,
-    this.borderRadius = 8.0,
+    this.borderRadius = 10.0,
     this.textStyle,
     this.hintStyle,
     this.textAlign,
@@ -78,7 +78,7 @@ class SmivoxInputFields extends StatefulWidget {
     this.inputFormatters,
     this.borderColor,
     this.focusedBorderColor,
-  }) : super(key: key);
+  });
 
   @override
   State<SmivoxInputFields> createState() => _SmivoxInputFieldsState();
@@ -88,7 +88,7 @@ class _SmivoxInputFieldsState extends State<SmivoxInputFields> {
   @override
   Widget build(BuildContext context) {
     final borderColor = widget.borderColor ?? AppColors.lightGrey;
-    final focusedBorderColor = widget.focusedBorderColor ?? Theme.of(context).primaryColor;
+    final focusedBorderColor = widget.focusedBorderColor ?? Colors.grey;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,13 +99,18 @@ class _SmivoxInputFieldsState extends State<SmivoxInputFields> {
             context,
             widget.headText!,
             fontSize: 16,
-        ),
+            fontWeight: FontWeight.w500,
+            color: AppColors.darkGrey,
+          ),
         Focus(
           onFocusChange: widget.onFocusChange,
           child: Container(
+            constraints: BoxConstraints(
+               maxHeight: 44,
+            ),
             decoration: BoxDecoration(
-              color: widget.fillColor ?? Colors.white,
-              borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.0),
+              color: widget.fillColor ?? Colors.transparent,
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 10),
               border: Border.all(
                 color: borderColor,
                 width: 1.0,
@@ -162,21 +167,21 @@ class _SmivoxInputFieldsState extends State<SmivoxInputFields> {
                             fontSize: 15,
                           ),
                       contentPadding: widget.contentPadding ??
-                          const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+                          const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                       isDense: widget.isDense,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.0),
+                        borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.0),
                         borderSide: BorderSide.none,
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.0),
+                        borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.0),
                         borderSide: BorderSide(
                           color: focusedBorderColor,
                           width: 1.0,
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.0),
+                        borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.0),
                         borderSide: BorderSide.none,
                       ),
                       suffixIcon: widget.suffixIcon != null

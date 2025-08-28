@@ -11,6 +11,7 @@ class SmivoxButton extends StatelessWidget {
   final VoidCallback? onTap;
   final IconData? icon;
   final bool hasIcon;
+  final Color? borderColor;
 
   const SmivoxButton({
     super.key,
@@ -20,6 +21,7 @@ class SmivoxButton extends StatelessWidget {
     this.textColor,
     this.onTap,
     this.icon,
+    this.borderColor,
     this.hasIcon = false,
   });
 
@@ -34,6 +36,7 @@ class SmivoxButton extends StatelessWidget {
         height: 44,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: borderColor ?? Colors.transparent, width: 2),
           color: buttonColor,
         ),
         child: Row(

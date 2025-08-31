@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:smivox_inventory_software/src/commons/app_colors.dart';
 import 'package:smivox_inventory_software/src/commons/common_methods.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_button.dart';
-import 'package:smivox_inventory_software/src/commons/smivox_button_with_icon.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_page_title.dart';
 
 class SmivoxConfirmDialog extends StatelessWidget {

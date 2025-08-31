@@ -4,6 +4,7 @@ import 'common_methods.dart';
 
 class SmivoxButtonWithIcon extends StatelessWidget {
   final Widget? widget;
+  final Widget? prewidget;
   final String text;
   final Color? textColor;
   final double? horPad;
@@ -14,7 +15,7 @@ class SmivoxButtonWithIcon extends StatelessWidget {
 
   const SmivoxButtonWithIcon({super.key,
     this.widget, required this.text, this.horPad, this.verPad,
-    this.bckgrndColor, this.borderColor, this.textColor, this.onTap});
+    this.bckgrndColor, this.borderColor, this.textColor, this.onTap, this.prewidget});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class SmivoxButtonWithIcon extends StatelessWidget {
           child: Row(
             spacing: 5,
             children: [
+              if (prewidget != null)prewidget!,
               CommonMethods.appTexts(
                   context,
                   text,

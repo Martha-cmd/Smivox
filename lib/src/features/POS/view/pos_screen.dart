@@ -116,13 +116,13 @@ class _POSState extends State<POS> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                        SmivoxButtonWithIcon(
-                           widget: SvgPicture.asset("assets/pos/tick-double.svg"),
+                           prewidget: SvgPicture.asset("assets/pos/tick-double.svg"),
                            text: "Save Order",
                            horPad: 30,
                          verPad: 12,
                        ),
                        SmivoxButtonWithIcon(
-                           widget: SvgPicture.asset("assets/pos/cart-check.svg"),
+                           prewidget: SvgPicture.asset("assets/pos/cart-check.svg"),
                            text: "Checkout",
                          horPad: 30,
                          verPad: 12,
@@ -133,7 +133,7 @@ class _POSState extends State<POS> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                        SmivoxButtonWithIcon(
-                           widget: SvgPicture.asset("assets/pos/trash.svg"),
+                           prewidget: SvgPicture.asset("assets/pos/trash.svg"),
                            text: "Clear Cart",
                            bckgrndColor: Colors.transparent,
                            borderColor: AppColors.error,
@@ -142,7 +142,7 @@ class _POSState extends State<POS> {
                          verPad: 12,
                        ),
                        SmivoxButtonWithIcon(
-                           widget: SvgPicture.asset("assets/pos/file-download 01.svg"),
+                           prewidget: SvgPicture.asset("assets/pos/file-download 01.svg"),
                            text: "Print Invoice",
                            horPad: 20,
                            verPad: 12,

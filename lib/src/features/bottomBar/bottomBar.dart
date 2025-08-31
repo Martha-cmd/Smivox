@@ -4,7 +4,6 @@ import 'package:smivox_inventory_software/src/commons/common_methods.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_drawer.dart';
 import 'package:smivox_inventory_software/src/features/POS/view/pos_screen.dart';
 import 'package:smivox_inventory_software/src/features/home/view/home.dart';
-import 'package:smivox_inventory_software/src/features/inventory/view/empty_screen.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/inventory_screen.dart';
 import 'package:smivox_inventory_software/src/features/sales/view/sales_screen.dart';
 import 'package:smivox_inventory_software/src/res/app_strings.dart';

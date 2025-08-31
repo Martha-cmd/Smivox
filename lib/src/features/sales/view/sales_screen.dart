@@ -22,7 +22,6 @@ class _SalesScreenState extends State<SalesScreen> {
             child: Column(
               children: [
                 SmivoxPageTitle(pageTitle: "Sales"),
-
                 const SizedBox(height: 16),
                 SalesDash(),
               ],

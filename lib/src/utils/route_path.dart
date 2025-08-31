@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smivox_inventory_software/src/features/POS/view/empty_pos_screen.dart';
 import 'package:smivox_inventory_software/src/features/authentication/view/company_registration_screen.dart';
 import 'package:smivox_inventory_software/src/features/authentication/view/forgot_password.dart';
 import 'package:smivox_inventory_software/src/features/authentication/view/personal_details.dart';
@@ -11,6 +12,7 @@ import 'package:smivox_inventory_software/src/features/bottomBar/bottomBar.dart'
 import 'package:smivox_inventory_software/src/features/home/view/home.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/inventory_screen.dart';
 import 'package:smivox_inventory_software/src/features/sales/view/sales_screen.dart';
+import 'package:smivox_inventory_software/src/features/sales/view/single_sales_screen.dart';
 import 'package:smivox_inventory_software/src/features/splashScreen/splash_screen.dart';
 import '../features/POS/view/pos_screen.dart';
 import '../features/onboarding/first_onboarding_screen.dart';
@@ -37,6 +39,8 @@ class RoutesPath {
     static const posScreen = "/posScreen";
     static const inventoryScreen = "/inventoryScreen";
     static const salesScreen = "/salesScreen";
+    static const emptyPOSScreen = "/emptyPOSScreen";
+    static const singleSalesScreen = "/singleSalesScreen";
 
 
     static Map<String, WidgetBuilder> routes = {
@@ -57,6 +61,8 @@ class RoutesPath {
       RoutesPath.posScreen: (context) => const POS(),
       RoutesPath.inventoryScreen: (context) => const InventoryScreen(),
       RoutesPath.salesScreen: (context) => const SalesScreen(),
+      RoutesPath.emptyPOSScreen: (context) => const EmptyPosScreen(),
+      RoutesPath.singleSalesScreen: (context) => const SingleSalesScreen(),
     };
 
     static routesFactory(settings) {
@@ -78,6 +84,8 @@ class RoutesPath {
         case RoutesPath.posScreen:
         case RoutesPath.inventoryScreen:
         case RoutesPath.salesScreen:
+        case RoutesPath.emptyPOSScreen:
+        case RoutesPath.singleSalesScreen:
       default:
       return null;
       }}

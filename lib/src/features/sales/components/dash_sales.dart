@@ -41,13 +41,15 @@ class SalesDashContainer extends StatelessWidget {
   final String dashName;
   final String? dashNumber;
   final Widget? widget;
+  final double? rightPad;
 
-  const SalesDashContainer({super.key, required this.dashName, this.dashNumber, this.widget});
+  const SalesDashContainer({super.key, required this.dashName, this.dashNumber, this.widget, this.rightPad});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 13),
+      // padding: EdgeInsets.symmetric(horizontal: 10, vertical: 13),
+      padding: EdgeInsets.only(left: 10, right: rightPad ?? 10, top: 13, bottom: 13),
       // width: 156,
       height: 95,
       decoration: BoxDecoration(

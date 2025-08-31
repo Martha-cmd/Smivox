@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SmivoxPageTitle(
                   pageTitle: "Hello Paul Ayomide",
-                  pageIcon: Icons.notifications_outlined,
+                  pageIcon: Icon(Icons.notifications_outlined),
                 ),
 
                 CommonMethods.appTexts(

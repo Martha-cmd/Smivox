@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_button_with_icon.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_inapp_text_fields.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_page_title.dart';
@@ -52,7 +53,7 @@ class SmivoxFilter extends StatelessWidget {
               ),
               child: SmivoxPageTitle(
                 pageTitle: "Filter Products",
-                pageIcon: CupertinoIcons.clear_circled_solid,
+                pageIcon: SvgPicture.asset("assets/svgs/remove.svg"),
                 pageIconColor: AppColors.inactiveGrey,
                 iconAction: () => Navigator.pop(context),
               ),

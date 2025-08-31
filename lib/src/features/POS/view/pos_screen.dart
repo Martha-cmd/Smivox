@@ -4,6 +4,7 @@ import 'package:smivox_inventory_software/src/commons/app_colors.dart';
 import 'package:smivox_inventory_software/src/commons/common_methods.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_button_with_icon.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_page_title.dart';
+import 'package:smivox_inventory_software/src/features/POS/view/create_sale_dialog.dart';
 import '../components/pos_item_body.dart';
 
 
@@ -24,7 +25,7 @@ class _POSState extends State<POS> {
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Column(
                 children: [
-                  SmivoxPageTitle(pageTitle: "Point of Sales", pageIcon: Icons.keyboard_arrow_down),
+                  SmivoxPageTitle(pageTitle: "Point of Sales", pageIcon: Icon(Icons.keyboard_arrow_down)),
       
       
                   const SizedBox(height: 10),
@@ -126,6 +127,16 @@ class _POSState extends State<POS> {
                            text: "Checkout",
                          horPad: 30,
                          verPad: 12,
+                         onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                      return CreateSaleDialog(
+
+                                      );
+                                  }
+                              );
+                         },
                        ),
                     ],
                   ),
@@ -139,7 +150,7 @@ class _POSState extends State<POS> {
                            borderColor: AppColors.error,
                            textColor: AppColors.error,
                            horPad: 30,
-                         verPad: 12,
+                           verPad: 12,
                        ),
                        SmivoxButtonWithIcon(
                            prewidget: SvgPicture.asset("assets/pos/file-download 01.svg"),

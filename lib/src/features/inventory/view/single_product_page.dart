@@ -39,7 +39,7 @@ class SingleProductPage extends StatelessWidget {
               child:
               SmivoxPageTitle(
                 pageTitle: "Hans Poundo Potato",
-                pageIcon: CupertinoIcons.clear_circled_solid,
+                pageIcon: SvgPicture.asset("assets/svgs/remove.svg"),
                 pageIconColor: AppColors.inactiveGrey,
                 iconAction: () => Navigator.pop(context),
               ),

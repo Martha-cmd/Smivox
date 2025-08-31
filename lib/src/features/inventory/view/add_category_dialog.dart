@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_page_title.dart';
 import '../../../commons/app_colors.dart';
 import '../../../commons/smivox_button.dart';
@@ -27,7 +28,7 @@ class AddCategoryDialog extends StatelessWidget {
                          padding: const EdgeInsets.only(left: 20.0, right: 20, top: 20.0, bottom: 10),
                          child: SmivoxPageTitle(
                            pageTitle: "Create Category",
-                           pageIcon: CupertinoIcons.clear_circled_solid,
+                           pageIcon: SvgPicture.asset("assets/svgs/remove.svg"),
                            pageIconColor: AppColors.inactiveGrey,
                            iconAction: () => Navigator.pop(context),
                          ),

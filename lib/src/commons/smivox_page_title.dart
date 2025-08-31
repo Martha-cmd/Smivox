@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'common_methods.dart';
 
 class SmivoxPageTitle extends StatelessWidget {
   final String pageTitle;
-  final IconData? pageIcon;
+  final Widget? pageIcon;
   final double? pageIconSize;
   final Color? pageIconColor;
   final VoidCallback? iconAction;
@@ -23,7 +24,8 @@ class SmivoxPageTitle extends StatelessWidget {
         ),
         GestureDetector(
            onTap: iconAction,
-            child: Icon(pageIcon, color: pageIconColor, size: pageIconSize,))
+            child: pageIcon
+        )
       ],
     );
   }

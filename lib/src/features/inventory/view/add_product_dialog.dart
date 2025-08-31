@@ -41,7 +41,7 @@ class AddProductDialog extends StatelessWidget {
               child:
               SmivoxPageTitle(
                 pageTitle: "Create Product",
-                pageIcon: CupertinoIcons.clear_circled_solid,
+                pageIcon: SvgPicture.asset("assets/svgs/remove.svg"),
                 pageIconColor: AppColors.inactiveGrey,
                 iconAction: () => Navigator.pop(context),
               ),

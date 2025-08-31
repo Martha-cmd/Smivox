@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smivox_inventory_software/src/commons/app_colors.dart';
 import 'package:smivox_inventory_software/src/commons/common_methods.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_button.dart';
@@ -53,7 +54,7 @@ class SmivoxConfirmDialog extends StatelessWidget {
             children: [
               SmivoxPageTitle(
                 pageTitle: "",
-                pageIcon: CupertinoIcons.clear_circled_solid,
+                pageIcon: SvgPicture.asset("assets/svgs/remove.svg"),
                 pageIconSize: 20,
                 pageIconColor: AppColors.inactiveInput,
                 iconAction: () => Navigator.pop(context),

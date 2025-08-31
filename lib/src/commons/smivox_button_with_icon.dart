@@ -9,13 +9,15 @@ class SmivoxButtonWithIcon extends StatelessWidget {
   final Color? textColor;
   final double? horPad;
   final double? verPad;
+  final double? borderWidth;
   final Color? bckgrndColor;
   final Color? borderColor;
   final VoidCallback? onTap;
+  final FontWeight? myFontWeight;
 
   const SmivoxButtonWithIcon({super.key,
     this.widget, required this.text, this.horPad, this.verPad,
-    this.bckgrndColor, this.borderColor, this.textColor, this.onTap, this.prewidget});
+    this.bckgrndColor, this.borderColor, this.textColor, this.onTap, this.prewidget, this.borderWidth, this.myFontWeight});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class SmivoxButtonWithIcon extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: horPad ?? 10, vertical: verPad ?? 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              border: Border.all(color: borderColor ?? AppColors.primary, width: 2),
+              border: Border.all(color: borderColor ?? AppColors.primary, width: borderWidth ?? 2),
               color: bckgrndColor ?? AppColors.primary
           ),
           child: Row(
@@ -37,7 +39,7 @@ class SmivoxButtonWithIcon extends StatelessWidget {
                   context,
                   text,
                   color: textColor ?? Colors.white,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: myFontWeight ?? FontWeight.w600,
                   fontSize: 16
               ),
               if (widget != null)widget!,

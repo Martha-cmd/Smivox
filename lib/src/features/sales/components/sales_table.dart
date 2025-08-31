@@ -127,8 +127,6 @@ class SalesTable extends StatelessWidget {
 
                           // Sales Info
                           Expanded(
-                              flex: 3,
-                              child: Expanded(
                                 flex: 3,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,8 +155,8 @@ class SalesTable extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                              )
-                          ),
+                              ),
+
 
                           // Sales Date
                           Column(

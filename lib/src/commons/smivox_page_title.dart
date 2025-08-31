@@ -13,20 +13,27 @@ class SmivoxPageTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        CommonMethods.appTexts(
-            context,
-            pageTitle,
-            fontSize: 18,
-            fontWeight: FontWeight.w600
-        ),
-        GestureDetector(
-           onTap: iconAction,
-            child: pageIcon
-        )
-      ],
+    return Container(
+      width: double.infinity,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          CommonMethods.appTexts(
+              context,
+              pageTitle,
+              fontSize: 18,
+              fontWeight: FontWeight.w600
+          ),
+          GestureDetector(
+             onTap: iconAction,
+              child: Container(
+                  width: pageIconSize ?? 24, // Constrain the width
+                  height: pageIconSize ?? 24,
+                  child: pageIcon,
+              )
+          )
+        ],
+      ),
     );
   }
 }

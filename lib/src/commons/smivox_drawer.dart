@@ -158,6 +158,7 @@ class _SmivoxDrawerState extends State<SmivoxDrawer> {
           ListTile(
             leading: SvgPicture.asset("assets/drawer/bar chart.svg", width: 20),
             title: CommonMethods.appTexts(context, "Reports"),
+            onTap: () => CommonMethods.sendToNextScreen(context, RoutesPath.reportsView),
           ),
           ListTile(
             leading: SvgPicture.asset("assets/drawer/logout 01.svg", width: 20),

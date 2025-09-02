@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:smivox_inventory_software/src/utils/route_path.dart';
-import '../../../commons/app_colors.dart';
-import '../../../commons/common_methods.dart';
-import '../../../commons/smivox_button_with_icon.dart';
-import '../../../commons/smivox_search_bar.dart';
-import '../view/filter_sales.dart';
 
-class SalesItem {
+import '../../../../../commons/app_colors.dart';
+import '../../../../../commons/common_methods.dart';
+import '../../../../../utils/route_path.dart';
+import '../../../../sales/components/sales_table.dart';
+
+class ReportsSalesItem {
   final String saleID;
   final String staffName;
   final String salesDate;
   final String salesCost;
 
-  SalesItem({
+  ReportsSalesItem({
     required this.saleID,
     required this.staffName,
     required this.salesDate,
@@ -20,8 +19,9 @@ class SalesItem {
   });
 }
 
-class SalesTable extends StatelessWidget {
-  final List<SalesItem> salesItems = [
+
+class ReportsSalesTable extends StatelessWidget {
+  final List<SalesItem> reportsSalesItems = [
     SalesItem(
       saleID: '95A2FFC6 ',
       staffName: 'Miriam Chinelo',
@@ -48,7 +48,7 @@ class SalesTable extends StatelessWidget {
     ),
   ];
 
-  SalesTable({super.key});
+  ReportsSalesTable({super.key});
 
   void _showActionMenu(BuildContext context, SalesItem item, Offset tapPosition) {
     final RenderBox overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
@@ -66,7 +66,7 @@ class SalesTable extends StatelessWidget {
       position: position,
       color: Color(0xFFF3F3F3),
       shape: RoundedRectangleBorder(
-         borderRadius: BorderRadius.circular(12)
+          borderRadius: BorderRadius.circular(12)
       ),
       items: [
         PopupMenuItem(
@@ -125,7 +125,7 @@ class SalesTable extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -133,67 +133,14 @@ class SalesTable extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Row(
-                children: [
-                  SmivoxButtonWithIcon(
-                    widget: Icon(Icons.add, color: Colors.white),
-                    text: "New",
-                    horPad: 5,
-                    verPad: 8,
-                    onTap:
-                        () => CommonMethods.sendToNextScreen(
-                          context,
-                          RoutesPath.bottomBar,
-                        ),
-                  ),
-                  const SizedBox(width: 10),
-                  SmivoxButtonWithIcon(
-                    widget: Icon(Icons.more_horiz, color: Colors.white),
-                    text: "Actions",
-                    verPad: 8,
-                    horPad: 5,
-                  ),
-                  const SizedBox(width: 10),
-                  SmivoxButtonWithIcon(
-                    widget: Icon(Icons.filter_list, color: AppColors.primary),
-                    bckgrndColor: Colors.transparent,
-                    borderColor: AppColors.primary,
-                    horPad: 5,
-                    verPad: 8,
-                    text: "Filters",
-                    textColor: AppColors.primary,
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return SalesFilter(
-                            onSubmit: (
-                              category,
-                              labelStatus,
-                              price,
-                              manufacturer,
-                              brand,
-                              date,
-                            ) {
-                              print("Product Added: $category, $labelStatus");
-                            },
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(height: 24),
-              SmivoxSearchBar(hintText: "Search sales"),
               const SizedBox(height: 24),
               ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: salesItems.length,
+                itemCount: reportsSalesItems.length,
                 separatorBuilder: (context, index) => const SizedBox(height: 8),
                 itemBuilder: (context, index) {
-                  final item = salesItems[index];
+                  final item = reportsSalesItems[index];
                   return GestureDetector(
                     onTapDown: (details) {
                       _showActionMenu(context, item, details.globalPosition);
@@ -230,7 +177,7 @@ class SalesTable extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            const SizedBox(width: 8),
+                            const SizedBox(width: 12),
 
                             // Sales Info
                             Expanded(

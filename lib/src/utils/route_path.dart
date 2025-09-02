@@ -12,6 +12,11 @@ import 'package:smivox_inventory_software/src/features/bottomBar/bottomBar.dart'
 import 'package:smivox_inventory_software/src/features/customer/view/customer_view.dart';
 import 'package:smivox_inventory_software/src/features/home/view/home.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/inventory_screen.dart';
+import 'package:smivox_inventory_software/src/features/reports/view/reports_view.dart';
+import 'package:smivox_inventory_software/src/features/reports/view/sales_reports/return_history_summary.dart';
+import 'package:smivox_inventory_software/src/features/reports/view/sales_reports/sales_by_customer.dart';
+import 'package:smivox_inventory_software/src/features/reports/view/sales_reports/sales_by_products.dart';
+import 'package:smivox_inventory_software/src/features/reports/view/sales_reports/sales_by_staff.dart';
 import 'package:smivox_inventory_software/src/features/sales/view/sales_screen.dart';
 import 'package:smivox_inventory_software/src/features/sales/view/single_sales_screen.dart';
 import 'package:smivox_inventory_software/src/features/settings/view/change_password.dart';
@@ -51,6 +56,11 @@ class RoutesPath {
     static const storeSettings = "/storeSettings";
     static const personalSettings = "/personalSettings";
     static const changePassword = "/changePassword";
+    static const reportsView = "/reportsView";
+    static const salesByCustomer = "/salesByCustomer";
+    static const salesByStaff = "/salesByStaff";
+    static const salesByProducts = "/salesByProducts";
+    static const returnHistorySummary = "/returnHistorySummary";
 
 
     static Map<String, WidgetBuilder> routes = {
@@ -78,6 +88,11 @@ class RoutesPath {
       RoutesPath.storeSettings: (context) => const StoreSettings(),
       RoutesPath.personalSettings: (context) => const PersonalSettings(),
       RoutesPath.changePassword: (context) => const ChangePassword(),
+      RoutesPath.reportsView: (context) => const ReportsView(),
+      RoutesPath.salesByCustomer: (context) => const SalesByCustomer(),
+      RoutesPath.salesByProducts: (context) => const SalesByProducts(),
+      RoutesPath.salesByStaff: (context) => const SalesByStaff(),
+      RoutesPath.returnHistorySummary: (context) => const ReturnHistorySummary(),
     };
 
     static routesFactory(settings) {
@@ -106,6 +121,11 @@ class RoutesPath {
         case RoutesPath.storeSettings:
         case RoutesPath.personalSettings:
         case RoutesPath.changePassword:
+        case RoutesPath.reportsView:
+        case RoutesPath.salesByCustomer:
+        case RoutesPath.salesByProducts:
+        case RoutesPath.salesByStaff:
+        case RoutesPath.returnHistorySummary:
       default:
       return null;
       }}

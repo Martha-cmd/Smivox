@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_inapp_text_fields.dart';
-
-import '../../../commons/common_methods.dart';
-import '../../../commons/smivox_button_with_icon.dart';
 import '../../../commons/smivox_footer_button.dart';
 import '../../../commons/smivox_page_title.dart';
 

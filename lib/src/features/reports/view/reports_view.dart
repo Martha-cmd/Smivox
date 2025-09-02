@@ -51,7 +51,7 @@ class _ReportsViewState extends State<ReportsView> {
                  fontSize: 18,
                ),
                const SizedBox(height: 20),
-               ReportsTab(reportItem: "Inventory Summary"),
+               ReportsTab(reportItem: "Inventory Summary",  onTap: () => CommonMethods.sendToNextScreen(context, RoutesPath.inventorySummaryReport),),
                const SizedBox(height: 34),
 
                /// Tamper Attempts
@@ -62,7 +62,7 @@ class _ReportsViewState extends State<ReportsView> {
                  fontSize: 18,
                ),
                const SizedBox(height: 20),
-               ReportsTab(reportItem: "Tamper Attempts Summary")
+               ReportsTab(reportItem: "Tamper Attempts Summary",  onTap: () => CommonMethods.sendToNextScreen(context, RoutesPath.tamperSummaryReport),)
              ],
          ),
       ),

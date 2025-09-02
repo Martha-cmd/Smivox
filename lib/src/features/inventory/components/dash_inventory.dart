@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import '../../../commons/app_colors.dart';
 import '../../../commons/common_methods.dart';
@@ -44,14 +46,14 @@ class InventoryDashContainer extends StatelessWidget {
   final String dashName;
   final String? dashNumber;
   final Widget? widget;
+  final double? rightPad;
 
-  const InventoryDashContainer({super.key, required this.dashName, this.dashNumber, this.widget});
+  const InventoryDashContainer({super.key, required this.dashName, this.dashNumber, this.widget, this.rightPad});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-      width: 156,
+      padding: EdgeInsets.only(left: 10, right: rightPad ?? 10, top: 20, bottom: 20),
       height: 95,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(8)),

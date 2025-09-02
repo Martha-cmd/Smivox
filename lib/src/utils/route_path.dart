@@ -12,11 +12,13 @@ import 'package:smivox_inventory_software/src/features/bottomBar/bottomBar.dart'
 import 'package:smivox_inventory_software/src/features/customer/view/customer_view.dart';
 import 'package:smivox_inventory_software/src/features/home/view/home.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/inventory_screen.dart';
+import 'package:smivox_inventory_software/src/features/reports/view/inventory_reports/view/inventory_summary_report.dart';
 import 'package:smivox_inventory_software/src/features/reports/view/reports_view.dart';
 import 'package:smivox_inventory_software/src/features/reports/view/sales_reports/return_history_summary.dart';
 import 'package:smivox_inventory_software/src/features/reports/view/sales_reports/sales_by_customer.dart';
 import 'package:smivox_inventory_software/src/features/reports/view/sales_reports/sales_by_products.dart';
 import 'package:smivox_inventory_software/src/features/reports/view/sales_reports/sales_by_staff.dart';
+import 'package:smivox_inventory_software/src/features/reports/view/tamper_attempts_report/view/tamper_summary_view.dart';
 import 'package:smivox_inventory_software/src/features/sales/view/sales_screen.dart';
 import 'package:smivox_inventory_software/src/features/sales/view/single_sales_screen.dart';
 import 'package:smivox_inventory_software/src/features/settings/view/change_password.dart';
@@ -61,6 +63,8 @@ class RoutesPath {
     static const salesByStaff = "/salesByStaff";
     static const salesByProducts = "/salesByProducts";
     static const returnHistorySummary = "/returnHistorySummary";
+    static const inventorySummaryReport = "/inventorySummaryReport";
+    static const tamperSummaryReport = "/tamperSummaryReport";
 
 
     static Map<String, WidgetBuilder> routes = {
@@ -93,6 +97,8 @@ class RoutesPath {
       RoutesPath.salesByProducts: (context) => const SalesByProducts(),
       RoutesPath.salesByStaff: (context) => const SalesByStaff(),
       RoutesPath.returnHistorySummary: (context) => const ReturnHistorySummary(),
+      RoutesPath.inventorySummaryReport: (context) => const InventorySummaryReport(),
+      RoutesPath.tamperSummaryReport: (context) => const TamperSummaryView(),
     };
 
     static routesFactory(settings) {
@@ -126,6 +132,8 @@ class RoutesPath {
         case RoutesPath.salesByProducts:
         case RoutesPath.salesByStaff:
         case RoutesPath.returnHistorySummary:
+        case RoutesPath.inventorySummaryReport:
+        case RoutesPath.tamperSummaryReport:
       default:
       return null;
       }}

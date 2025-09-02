@@ -41,7 +41,8 @@ class CustomInAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: title != null ? CommonMethods.appTexts(
         context,
         title!,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
+        fontSize: 20
       ) : null,
       centerTitle: true,
       backgroundColor: Colors.white,

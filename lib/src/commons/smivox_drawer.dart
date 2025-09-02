@@ -117,7 +117,7 @@ class _SmivoxDrawerState extends State<SmivoxDrawer> {
                       fontSize: 16,
                     ),
                     onTap: () {
-                      Navigator.pop(context);
+                      CommonMethods.sendToNextScreen(context, RoutesPath.storeSettings);
                     },
                   ),
                 ),
@@ -132,8 +132,7 @@ class _SmivoxDrawerState extends State<SmivoxDrawer> {
                       fontSize: 16,
                     ),
                     onTap: () {
-                      // Navigate to personal settings
-                      Navigator.pop(context);
+                      CommonMethods.sendToNextScreen(context, RoutesPath.personalSettings);
                     },
                   ),
                 ),
@@ -148,8 +147,7 @@ class _SmivoxDrawerState extends State<SmivoxDrawer> {
                       fontSize: 16,
                     ),
                     onTap: () {
-                      // Navigate to change password
-                      Navigator.pop(context);
+                      CommonMethods.sendToNextScreen(context, RoutesPath.changePassword);
                     },
                   ),
                 ),

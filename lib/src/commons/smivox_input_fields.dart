@@ -14,6 +14,8 @@ class SmivoxInputFields extends StatefulWidget {
   final String? hintText;
   final String? labelText;
   final String? headText;
+  final Color? headTextColor;
+  final FontWeight? headFontWeight;
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
   final FormFieldValidator<String>? validator;
@@ -53,6 +55,8 @@ class SmivoxInputFields extends StatefulWidget {
     this.hintText,
     this.labelText,
     this.headText,
+    this.headTextColor,
+    this.headFontWeight,
     this.onChanged,
     this.onFocusChange,
     this.onSubmitted,
@@ -89,6 +93,7 @@ class _SmivoxInputFieldsState extends State<SmivoxInputFields> {
   Widget build(BuildContext context) {
     final borderColor = widget.borderColor ?? AppColors.lightGrey;
     final focusedBorderColor = widget.focusedBorderColor ?? Colors.grey;
+    final headTextColor = widget.headTextColor ?? AppColors.darkGrey;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,8 +104,8 @@ class _SmivoxInputFieldsState extends State<SmivoxInputFields> {
             context,
             widget.headText!,
             fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: AppColors.darkGrey,
+            fontWeight: widget.headFontWeight ?? FontWeight.w500,
+            color: headTextColor
           ),
         Focus(
           onFocusChange: widget.onFocusChange,

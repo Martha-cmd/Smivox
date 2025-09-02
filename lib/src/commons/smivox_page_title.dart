@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'common_methods.dart';
 
 class SmivoxPageTitle extends StatelessWidget {
@@ -27,7 +26,7 @@ class SmivoxPageTitle extends StatelessWidget {
           GestureDetector(
              onTap: iconAction,
               child: Container(
-                  width: pageIconSize ?? 24, // Constrain the width
+                  width: pageIconSize ?? 24,
                   height: pageIconSize ?? 24,
                   child: pageIcon,
               )

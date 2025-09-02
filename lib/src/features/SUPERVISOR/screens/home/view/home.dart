@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smivox_inventory_software/src/commons/common_methods.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_page_title.dart';
 import 'package:smivox_inventory_software/src/features/home/components/home_page_subheads.dart';
-import '../../../commons/app_colors.dart';
-import '../../../utils/route_path.dart';
+import 'package:smivox_inventory_software/src/utils/route_path.dart';
+import '../../../../../commons/app_colors.dart';
 import '../components/dashboard_components.dart';
 import '../components/home_graph.dart';
 import '../components/quick_actions.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class SupervisorHomeScreen extends StatefulWidget {
+  const SupervisorHomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<SupervisorHomeScreen> createState() => _SupervisorHomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _SupervisorHomeScreenState extends State<SupervisorHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -28,14 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SmivoxPageTitle(
-                  pageTitle: "Hello Paul Ayomide",
+                  pageTitle: "Hello Paul Stone",
                   pageIcon: SvgPicture.asset("assets/svgs/notification.svg"),
                   iconAction: () => CommonMethods.sendToNextScreen(context, RoutesPath.notificationView),
                 ),
 
                 CommonMethods.appTexts(
                   context,
-                  "Admin",
+                  "Supervisor",
                   color: AppColors.inactiveGrey,
                 ),
 

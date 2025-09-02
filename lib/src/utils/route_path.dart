@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smivox_inventory_software/src/features/POS/view/empty_pos_screen.dart';
+import 'package:smivox_inventory_software/src/features/SUPERVISOR/screens/bottomBar/bottomBar.dart';
 import 'package:smivox_inventory_software/src/features/authentication/view/company_registration_screen.dart';
 import 'package:smivox_inventory_software/src/features/authentication/view/forgot_password.dart';
 import 'package:smivox_inventory_software/src/features/authentication/view/personal_details.dart';
@@ -13,6 +14,7 @@ import 'package:smivox_inventory_software/src/features/customer/view/customer_vi
 import 'package:smivox_inventory_software/src/features/home/view/home.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/category_view.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/inventory_screen.dart';
+import 'package:smivox_inventory_software/src/features/notification/view/notification_view.dart';
 import 'package:smivox_inventory_software/src/features/reports/view/inventory_reports/view/inventory_summary_report.dart';
 import 'package:smivox_inventory_software/src/features/reports/view/reports_view.dart';
 import 'package:smivox_inventory_software/src/features/reports/view/sales_reports/return_history_summary.dart';
@@ -67,6 +69,11 @@ class RoutesPath {
     static const inventorySummaryReport = "/inventorySummaryReport";
     static const tamperSummaryReport = "/tamperSummaryReport";
     static const categoryView = "/categoryView";
+    static const notificationView = "/notificationView";
+
+    /// SuperVisor Screens
+    static const supervisorBottomBarView = "/superVisorHomeView";
+
 
 
     static Map<String, WidgetBuilder> routes = {
@@ -102,6 +109,8 @@ class RoutesPath {
       RoutesPath.inventorySummaryReport: (context) => const InventorySummaryReport(),
       RoutesPath.tamperSummaryReport: (context) => const TamperSummaryView(),
       RoutesPath.categoryView: (context) => const CategoryView(),
+      RoutesPath.notificationView: (context) => const NotificationView(),
+      RoutesPath.supervisorBottomBarView: (context) => const SupervisorBottomBar(),
     };
 
     static routesFactory(settings) {
@@ -138,6 +147,8 @@ class RoutesPath {
         case RoutesPath.inventorySummaryReport:
         case RoutesPath.tamperSummaryReport:
         case RoutesPath.categoryView:
+        case RoutesPath.notificationView:
+        case RoutesPath.supervisorBottomBarView:
       default:
       return null;
       }}

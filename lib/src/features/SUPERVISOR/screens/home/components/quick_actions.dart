@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smivox_inventory_software/src/utils/route_path.dart';
-import '../../../commons/common_methods.dart';
-import '../../inventory/view/add_product_dialog.dart';
+import '../../../../../commons/common_methods.dart';
+import '../../../../inventory/view/add_product_dialog.dart';
+
 
 class QuickActions extends StatelessWidget {
   const QuickActions({super.key});
@@ -31,13 +32,13 @@ class QuickActions extends StatelessWidget {
                     builder: (context) {
                       return AddProductDialog(
                         onSubmit: (
-                          category,
-                          labelStatus,
-                          price,
-                          manufacturer,
-                          brand,
-                          date,
-                        ) {
+                            category,
+                            labelStatus,
+                            price,
+                            manufacturer,
+                            brand,
+                            date,
+                            ) {
                           print("Product Added: $category, $labelStatus");
                         },
                       );

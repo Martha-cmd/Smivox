@@ -5,8 +5,9 @@ import 'package:smivox_inventory_software/src/commons/smivox_button.dart';
 class SmivoxFooterButton extends StatelessWidget {
   final String? btnText;
   final VoidCallback? onTap;
+  final Widget? widget;
 
-  const SmivoxFooterButton({super.key, this.btnText, this.onTap});
+  const SmivoxFooterButton({super.key, this.btnText, this.onTap, this.widget});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class SmivoxFooterButton extends StatelessWidget {
           ),
         ],
       ),
-      child: SmivoxButton(text: btnText, onTap: onTap),
+      child: widget ?? SmivoxButton(text: btnText, onTap: onTap),
     );
   }
 }

@@ -11,6 +11,7 @@ import 'package:smivox_inventory_software/src/features/authentication/view/verif
 import 'package:smivox_inventory_software/src/features/bottomBar/bottomBar.dart';
 import 'package:smivox_inventory_software/src/features/customer/view/customer_view.dart';
 import 'package:smivox_inventory_software/src/features/home/view/home.dart';
+import 'package:smivox_inventory_software/src/features/inventory/view/category_view.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/inventory_screen.dart';
 import 'package:smivox_inventory_software/src/features/reports/view/inventory_reports/view/inventory_summary_report.dart';
 import 'package:smivox_inventory_software/src/features/reports/view/reports_view.dart';
@@ -65,6 +66,7 @@ class RoutesPath {
     static const returnHistorySummary = "/returnHistorySummary";
     static const inventorySummaryReport = "/inventorySummaryReport";
     static const tamperSummaryReport = "/tamperSummaryReport";
+    static const categoryView = "/categoryView";
 
 
     static Map<String, WidgetBuilder> routes = {
@@ -99,6 +101,7 @@ class RoutesPath {
       RoutesPath.returnHistorySummary: (context) => const ReturnHistorySummary(),
       RoutesPath.inventorySummaryReport: (context) => const InventorySummaryReport(),
       RoutesPath.tamperSummaryReport: (context) => const TamperSummaryView(),
+      RoutesPath.categoryView: (context) => const CategoryView(),
     };
 
     static routesFactory(settings) {
@@ -134,6 +137,7 @@ class RoutesPath {
         case RoutesPath.returnHistorySummary:
         case RoutesPath.inventorySummaryReport:
         case RoutesPath.tamperSummaryReport:
+        case RoutesPath.categoryView:
       default:
       return null;
       }}

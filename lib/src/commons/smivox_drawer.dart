@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:smivox_inventory_software/src/features/inventory/view/add_category_dialog.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/add_product_dialog.dart';
 import 'package:smivox_inventory_software/src/utils/route_path.dart';
 import 'app_colors.dart';
@@ -68,7 +69,11 @@ class _SmivoxDrawerState extends State<SmivoxDrawer> {
           ),
           ListTile(
             leading: SvgPicture.asset("assets/drawer/packaging-add.svg", width: 20),
-            title: CommonMethods.appTexts(context, "Add Categories"),
+            title: CommonMethods.appTexts(context, "Categories"),
+            onTap: () {
+              Navigator.pop(context);
+              CommonMethods.sendToNextScreen(context, RoutesPath.categoryView);
+            }
           ),
           ListTile(
             leading: SvgPicture.asset("assets/drawer/user-circle.svg", width: 20),
@@ -84,11 +89,9 @@ class _SmivoxDrawerState extends State<SmivoxDrawer> {
               CommonMethods.sendToNextScreen(context, RoutesPath.staffView);
             },
           ),
-          // ListTile(
-          //   leading: SvgPicture.asset("assets/drawer/setting.svg", width: 20),
-          //   title: CommonMethods.appTexts(context, "Settings"),
-          // ),
-          // Settings with dropdown
+
+
+          /// Settings dropdown
           Column(
             children: [
               ListTile(
@@ -163,6 +166,8 @@ class _SmivoxDrawerState extends State<SmivoxDrawer> {
           ListTile(
             leading: SvgPicture.asset("assets/drawer/logout 01.svg", width: 20),
             title: CommonMethods.appTexts(context, "Log out", color: AppColors.error, fontWeight: FontWeight.w600),
+            onTap: () => CommonMethods.sendToNextScreen(context, RoutesPath.genLoginScreen),
+
           ),
         ],
       ),

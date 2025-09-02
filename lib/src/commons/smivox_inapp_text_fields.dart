@@ -14,12 +14,14 @@ class SmivoxInappTextFields extends StatelessWidget {
   final Color hintColor;
   final bool isRequired;
   final EdgeInsetsGeometry padding;
+  final Widget? suffixIcon;
 
   const SmivoxInappTextFields({
     super.key,
     required this.label,
     required this.controller,
     this.keyboardType = TextInputType.text,
+    this.suffixIcon,
     this.hasQuestionMark = false,
     this.tooltip = '',
     this.hintText = '',
@@ -76,6 +78,7 @@ class SmivoxInappTextFields extends StatelessWidget {
             controller: controller,
             hintText: hintText,
             hintStyle: TextStyle(fontSize: 14, color: hintColor),
+            suffixIcon: suffixIcon,
             // keyboardType: keyboardType,
           ),
         ],

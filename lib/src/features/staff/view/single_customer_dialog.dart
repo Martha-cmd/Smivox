@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:smivox_inventory_software/src/commons/smivox_inapp_text_fields.dart';
-
-import '../../../commons/common_methods.dart';
-import '../../../commons/smivox_button_with_icon.dart';
 import '../../../commons/smivox_footer_button.dart';
+import '../../../commons/smivox_inapp_text_fields.dart';
 import '../../../commons/smivox_page_title.dart';
 
-class CreateCustomerDialog extends StatefulWidget {
-  const CreateCustomerDialog({super.key});
+
+class SingleStaffDialog extends StatefulWidget {
+  const SingleStaffDialog({super.key});
+
   @override
-  State<CreateCustomerDialog> createState() => _CreateCustomerDialogState();
+  State<SingleStaffDialog> createState() => _SingleStaffDialogState();
 }
 
-class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
+class _SingleStaffDialogState extends State<SingleStaffDialog> {
   final TextEditingController fNameController = TextEditingController();
   final TextEditingController lNameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -33,7 +32,7 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
       backgroundColor: Colors.white,
       child: ConstrainedBox(
         constraints: BoxConstraints(
-             maxHeight: MediaQuery.of(context).size.height * 0.7,
+          maxHeight: MediaQuery.of(context).size.height * 0.7,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -48,25 +47,26 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0, right: 20, top: 20.0, bottom: 10),
                       child: SmivoxPageTitle(
-                        pageTitle: "Create Customer",
+                        pageTitle: "AdaAmira #95A2F",
                         pageIcon: SvgPicture.asset("assets/svgs/remove.svg"),
                         iconAction: () => Navigator.pop(context),
                       ),
                     ),
 
-                    SmivoxInappTextFields(label: "First Name", isRequired: true, controller: fNameController, hintText: "Enter customer first name",),
-                    SmivoxInappTextFields(label: "Last Name", isRequired: true, controller: fNameController, hintText: "Enter customer last name"),
-                    SmivoxInappTextFields(label: "Phone", isRequired: true, controller: fNameController, hintText: "Enter customer phone number"),
-                    SmivoxInappTextFields(label: "Email", controller: fNameController, hintText: "Enter customer email"),
-                    SmivoxInappTextFields(label: "Gender", controller: fNameController, hintText: "Select customer gender"),
-                    SmivoxInappTextFields(label: "Address", controller: fNameController, hintText: "Enter customer address"),
-                    SmivoxInappTextFields(label: "City", controller: fNameController, hintText: "Select customer city"),
-                    SmivoxInappTextFields(label: "Country", controller: fNameController, hintText: "Select customer country"),
-                    SmivoxInappTextFields(label: "Date Created", controller: fNameController, hintText: "Enter date created",),
+                    SmivoxInappTextFields(label: "First Name", isRequired: true, controller: fNameController, hintText: "Ada", hintColor: Colors.black),
+                    SmivoxInappTextFields(label: "Last Name", isRequired: true, controller: fNameController, hintText: "Amara", hintColor: Colors.black),
+                    SmivoxInappTextFields(label: "Role", isRequired: true, controller: fNameController, hintText: "Supervisor", hintColor: Colors.black),
+                    SmivoxInappTextFields(label: "Phone", isRequired: true, controller: fNameController, hintText: "+234 456 234 9870", hintColor: Colors.black),
+                    SmivoxInappTextFields(label: "Email", controller: fNameController, hintText: "adaamira@gmail.com", hintColor: Colors.black),
+                    SmivoxInappTextFields(label: "Gender", controller: fNameController, hintText: "Female", hintColor: Colors.black),
+                    SmivoxInappTextFields(label: "Address", controller: fNameController, hintText: "No 3 Adelabu Lokoja", hintColor: Colors.black),
+                    SmivoxInappTextFields(label: "City", controller: fNameController, hintText: "Ikoyi", hintColor: Colors.black),
+                    SmivoxInappTextFields(label: "Country", controller: fNameController, hintText: "Nigeria", hintColor: Colors.black),
+                    SmivoxInappTextFields(label: "Date Created", controller: fNameController, hintText: "03-May-2015", hintColor: Colors.black),
 
                     SizedBox(height: 40),
-              
-              
+
+
                   ],
                 ),
               ),
@@ -75,7 +75,7 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
               btnText: "Save",
               onTap: () {
                 Navigator.pop(context);
-                },
+              },
             )
           ],
         ),

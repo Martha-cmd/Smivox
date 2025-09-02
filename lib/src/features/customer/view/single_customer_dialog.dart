@@ -48,7 +48,7 @@ class _SingleCustomerDialogState extends State<SingleCustomerDialog> {
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0, right: 20, top: 20.0, bottom: 10),
                       child: SmivoxPageTitle(
-                        pageTitle: "Create Customer",
+                        pageTitle: "AdaAmira #95A2F",
                         pageIcon: SvgPicture.asset("assets/svgs/remove.svg"),
                         iconAction: () => Navigator.pop(context),
                       ),

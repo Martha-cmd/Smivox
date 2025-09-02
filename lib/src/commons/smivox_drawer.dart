@@ -5,8 +5,15 @@ import 'package:smivox_inventory_software/src/utils/route_path.dart';
 import 'app_colors.dart';
 import 'common_methods.dart';
 
-class SmivoxDrawer extends StatelessWidget {
+class SmivoxDrawer extends StatefulWidget {
   const SmivoxDrawer({super.key});
+
+  @override
+  State<SmivoxDrawer> createState() => _SmivoxDrawerState();
+}
+
+class _SmivoxDrawerState extends State<SmivoxDrawer> {
+  bool _isSettingsExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -73,10 +80,82 @@ class SmivoxDrawer extends StatelessWidget {
           ListTile(
             leading: SvgPicture.asset("assets/drawer/user-polygon.svg", width: 20),
             title: CommonMethods.appTexts(context, "Staff"),
+            onTap: () {
+              CommonMethods.sendToNextScreen(context, RoutesPath.staffView);
+            },
           ),
-          ListTile(
-            leading: SvgPicture.asset("assets/drawer/setting.svg", width: 20),
-            title: CommonMethods.appTexts(context, "Settings"),
+          // ListTile(
+          //   leading: SvgPicture.asset("assets/drawer/setting.svg", width: 20),
+          //   title: CommonMethods.appTexts(context, "Settings"),
+          // ),
+          // Settings with dropdown
+          Column(
+            children: [
+              ListTile(
+                leading: SvgPicture.asset("assets/drawer/setting.svg", width: 20),
+                title: CommonMethods.appTexts(context, "Settings"),
+                trailing: Icon(
+                  _isSettingsExpanded ? Icons.expand_less : Icons.expand_more,
+                  size: 25,
+                  color: AppColors.primary,
+                ),
+                onTap: () {
+                  setState(() {
+                    _isSettingsExpanded = !_isSettingsExpanded;
+                  });
+                },
+              ),
+              if (_isSettingsExpanded) ...[
+                // Store Settings
+                Padding(
+                  padding: const EdgeInsets.only(left: 60.0, right: 16),
+                  child: ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: CommonMethods.appTexts(
+                      context,
+                      "Store Settings",
+                      fontSize: 16,
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                // Personal Settings
+                Padding(
+                  padding: const EdgeInsets.only(left: 60.0, right: 16),
+                  child: ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: CommonMethods.appTexts(
+                      context,
+                      "Personal Settings",
+                      fontSize: 16,
+                    ),
+                    onTap: () {
+                      // Navigate to personal settings
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                // Change Password
+                Padding(
+                  padding: const EdgeInsets.only(left: 60.0, right: 16),
+                  child: ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: CommonMethods.appTexts(
+                      context,
+                      "Change Password",
+                      fontSize: 16,
+                    ),
+                    onTap: () {
+                      // Navigate to change password
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                const SizedBox(height: 8),
+              ],
+            ],
           ),
           ListTile(
             leading: SvgPicture.asset("assets/drawer/bar chart.svg", width: 20),

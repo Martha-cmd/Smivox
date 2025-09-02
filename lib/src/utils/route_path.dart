@@ -14,11 +14,15 @@ import 'package:smivox_inventory_software/src/features/home/view/home.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/inventory_screen.dart';
 import 'package:smivox_inventory_software/src/features/sales/view/sales_screen.dart';
 import 'package:smivox_inventory_software/src/features/sales/view/single_sales_screen.dart';
+import 'package:smivox_inventory_software/src/features/settings/view/change_password.dart';
+import 'package:smivox_inventory_software/src/features/settings/view/personal_settings.dart';
+import 'package:smivox_inventory_software/src/features/settings/view/store_settings.dart';
 import 'package:smivox_inventory_software/src/features/splashScreen/splash_screen.dart';
 import '../features/POS/view/pos_screen.dart';
 import '../features/onboarding/first_onboarding_screen.dart';
 import '../features/onboarding/second_onboarding_screen.dart';
 import '../features/onboarding/third_onboarding_screen.dart';
+import '../features/staff/view/staff_view.dart';
 
 
 class RoutesPath {
@@ -43,6 +47,10 @@ class RoutesPath {
     static const emptyPOSScreen = "/emptyPOSScreen";
     static const singleSalesScreen = "/singleSalesScreen";
     static const customerView = "/customerView";
+    static const staffView = "/staffView";
+    static const storeSettings = "/storeSettings";
+    static const personalSettings = "/personalSettings";
+    static const changePassword = "/changePassword";
 
 
     static Map<String, WidgetBuilder> routes = {
@@ -66,6 +74,10 @@ class RoutesPath {
       RoutesPath.emptyPOSScreen: (context) => const EmptyPosScreen(),
       RoutesPath.singleSalesScreen: (context) => const SingleSalesScreen(),
       RoutesPath.customerView: (context) => const CustomerView(),
+      RoutesPath.staffView: (context) => const StaffView(),
+      RoutesPath.storeSettings: (context) => const StoreSettings(),
+      RoutesPath.personalSettings: (context) => const PersonalSettings(),
+      RoutesPath.changePassword: (context) => const ChangePassword(),
     };
 
     static routesFactory(settings) {
@@ -90,6 +102,10 @@ class RoutesPath {
         case RoutesPath.emptyPOSScreen:
         case RoutesPath.singleSalesScreen:
         case RoutesPath.customerView:
+        case RoutesPath.staffView:
+        case RoutesPath.storeSettings:
+        case RoutesPath.personalSettings:
+        case RoutesPath.changePassword:
       default:
       return null;
       }}

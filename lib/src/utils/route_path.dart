@@ -9,6 +9,7 @@ import 'package:smivox_inventory_software/src/features/authentication/view/signI
 import 'package:smivox_inventory_software/src/features/authentication/view/verifications/check_email_screen.dart';
 import 'package:smivox_inventory_software/src/features/authentication/view/verifications/verified.dart';
 import 'package:smivox_inventory_software/src/features/bottomBar/bottomBar.dart';
+import 'package:smivox_inventory_software/src/features/customer/view/customer_view.dart';
 import 'package:smivox_inventory_software/src/features/home/view/home.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/inventory_screen.dart';
 import 'package:smivox_inventory_software/src/features/sales/view/sales_screen.dart';
@@ -41,6 +42,7 @@ class RoutesPath {
     static const salesScreen = "/salesScreen";
     static const emptyPOSScreen = "/emptyPOSScreen";
     static const singleSalesScreen = "/singleSalesScreen";
+    static const customerView = "/customerView";
 
 
     static Map<String, WidgetBuilder> routes = {
@@ -63,6 +65,7 @@ class RoutesPath {
       RoutesPath.salesScreen: (context) => const SalesScreen(),
       RoutesPath.emptyPOSScreen: (context) => const EmptyPosScreen(),
       RoutesPath.singleSalesScreen: (context) => const SingleSalesScreen(),
+      RoutesPath.customerView: (context) => const CustomerView(),
     };
 
     static routesFactory(settings) {
@@ -86,6 +89,7 @@ class RoutesPath {
         case RoutesPath.salesScreen:
         case RoutesPath.emptyPOSScreen:
         case RoutesPath.singleSalesScreen:
+        case RoutesPath.customerView:
       default:
       return null;
       }}

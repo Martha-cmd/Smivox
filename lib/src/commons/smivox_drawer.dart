@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:smivox_inventory_software/src/features/inventory/view/add_product_dialog.dart';
+import 'package:smivox_inventory_software/src/utils/route_path.dart';
 import 'app_colors.dart';
 import 'common_methods.dart';
 
@@ -43,6 +45,19 @@ class SmivoxDrawer extends StatelessWidget {
           ListTile(
             leading: SvgPicture.asset("assets/drawer/warehouse.svg", width: 20),
             title: CommonMethods.appTexts(context, "Add Products"),
+            onTap: () {
+                Navigator.pop(context);
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                        return AddProductDialog(
+                            onSubmit: (category, labelStatus, price, manufacturer, brand, date) {
+                              print("Product Added: $category, $labelStatus");
+                            }
+                        );
+                    }
+                );
+            },
           ),
           ListTile(
             leading: SvgPicture.asset("assets/drawer/packaging-add.svg", width: 20),
@@ -51,6 +66,9 @@ class SmivoxDrawer extends StatelessWidget {
           ListTile(
             leading: SvgPicture.asset("assets/drawer/user-circle.svg", width: 20),
             title: CommonMethods.appTexts(context, "Customers"),
+            onTap: () {
+                CommonMethods.sendToNextScreen(context, RoutesPath.customerView);
+            },
           ),
           ListTile(
             leading: SvgPicture.asset("assets/drawer/user-polygon.svg", width: 20),

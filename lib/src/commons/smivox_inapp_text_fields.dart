@@ -11,6 +11,7 @@ class SmivoxInappTextFields extends StatelessWidget {
   final bool hasQuestionMark;
   final String tooltip;
   final String hintText;
+  final Color hintColor;
   final bool isRequired;
   final EdgeInsetsGeometry padding;
 
@@ -23,6 +24,7 @@ class SmivoxInappTextFields extends StatelessWidget {
     this.tooltip = '',
     this.hintText = '',
     this.isRequired = false,
+    this.hintColor = AppColors.inactiveGrey,
     this.padding = const EdgeInsets.symmetric(vertical: 14, horizontal: 20.0),
   });
 
@@ -73,7 +75,7 @@ class SmivoxInappTextFields extends StatelessWidget {
           SmivoxInputFields(
             controller: controller,
             hintText: hintText,
-            hintStyle: const TextStyle(fontSize: 14),
+            hintStyle: TextStyle(fontSize: 14, color: hintColor),
             // keyboardType: keyboardType,
           ),
         ],

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smivox_inventory_software/src/commons/app_colors.dart';
 import 'package:smivox_inventory_software/src/commons/common_methods.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_button.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_input_fields.dart';
@@ -58,7 +59,6 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
   Future<void> _preloadAllCountriesStates() async {
     try {
       await StateService.getAllCountriesStates();
-      // Data is now cached in the service
     } catch (e) {
       print('Error preloading states: $e');
     }
@@ -176,6 +176,16 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       ),
                       // suffixIcon: Icon(CupertinoIcons.chevron_down, size: 15),
                       controller: companyCityController,
+                    ),
+                    SmivoxInputFields(
+                      headText: AppTexts.address,
+                      headFontWeight: FontWeight.normal,
+                      labelColor: Colors.black,
+                      hintText: AppTexts.companyAddress,
+                      leadingIcon: Icon(Icons.house_outlined,
+                        color: AppColors.inactiveGrey,
+                      ),
+                      controller: companyEmailAddressController,
                     ),
                     SmivoxInputFields(
                       headText: AppTexts.natureOfBusiness,

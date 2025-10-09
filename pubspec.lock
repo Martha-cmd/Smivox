@@ -58,7 +58,7 @@ packages:
     source: hosted
     version: "1.0.8"
   dio:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: dio
       sha256: d90ee57923d1828ac14e492ca49440f65477f4bb1263575900be731a3dac66a9
@@ -87,7 +87,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_dotenv:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: flutter_dotenv
       sha256: d4130c4a43e0b13fefc593bc3961f2cb46e30cb79e253d4a526b1b5d24ae1ce4

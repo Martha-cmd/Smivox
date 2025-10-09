@@ -10,6 +10,8 @@ class AppTexts {
   static const country = "Country";
   static const state = "State";
   static const city = "City";
+  static const address = "Address";
+  static const companyAddress = "Enter your business Address";
   static const natureOfBusiness = "Nature of business";
   static const othersPleaseSpecify = "Others (Please specify)";
   static const alreadyHaveAnAccount = "Already have an account?";

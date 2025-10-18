@@ -20,7 +20,7 @@ class ThirdOnboardingScreen extends StatelessWidget {
           currentIndex: 2,
           totalPages: 3,
           btnText: "Get Started",
-          onTap: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.companyRegistrationScreen),
+          onTap: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.storeRegistrationScreen),
           hasIcon: false,
         ),
       ),

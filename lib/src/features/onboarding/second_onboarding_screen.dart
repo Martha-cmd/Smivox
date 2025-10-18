@@ -11,7 +11,7 @@ class SecondOnboardingScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: OnboardingComponent(
-          action: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.companyRegistrationScreen),
+          action: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.storeRegistrationScreen),
           image: 'assets/onboarding/logistics.png',
           headText: "The right way to grow your business",
           subText: "Grow your business, not losses, Smivox secures your inventory.",

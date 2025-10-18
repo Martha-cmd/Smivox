@@ -1,21 +1,23 @@
 class AppTexts {
-  static const companyName = "Smivox";
-  static const companyNameSmall = "smivox";
+  static const storeName = "Smivox";
+  static const storeNameSmall = "smivox";
 
   /// REGISTRATION
-  static const welcomeToSmivox = "Welcome to $companyName";
-  static const subtextCompanyReg = "Let’s get your inventory secured.";
-  static const companyNameLabel = "Company name";
-  static const companyEmailLabel = "Company email address";
+  static const welcomeToSmivox = "Welcome to $storeName";
+  static const subtextStoreNameReg = "Let’s get your inventory secured.";
+  static const storeNameLabel = "Store name";
+  static const storeEmailLabel = "Store email address";
   static const country = "Country";
   static const state = "State";
   static const city = "City";
   static const address = "Address";
-  static const companyAddress = "Enter your business Address";
+  static const storeAddress = "Enter your business Address";
   static const natureOfBusiness = "Nature of business";
   static const othersPleaseSpecify = "Others (Please specify)";
   static const alreadyHaveAnAccount = "Already have an account?";
   static const login = "Login";
+  static const password = "Password";
+  static const confirmPassword = "ConfirmPassword";
 
   /// Personal Details
   static const enterPersonalDetails = "Enter your personal details";
@@ -23,10 +25,8 @@ class AppTexts {
   static const firstName = "First name";
   static const lastName = "Last name";
   static const email = "Email";
-  static const password = "Password";
-  static const confirmPassword = "Confirm password";
 
-  /// Company Login
+  /// Store Login
   static const welcome = "Welcome";
   static const welcomeBackSubText = "Secure inventory control starts here.";
 

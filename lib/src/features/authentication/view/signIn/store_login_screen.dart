@@ -10,14 +10,14 @@ import '../../../../commons/app_colors.dart';
 import '../../../../commons/common_methods.dart';
 
 
-class CompanyLoginScreen extends StatefulWidget {
-  const CompanyLoginScreen({super.key});
+class StoreLoginScreen extends StatefulWidget {
+  const StoreLoginScreen({super.key});
 
   @override
-  State<CompanyLoginScreen> createState() => _CompanyLoginScreenState();
+  State<StoreLoginScreen> createState() => _StoreLoginScreenState();
 }
 
-class _CompanyLoginScreenState extends State<CompanyLoginScreen> {
+class _StoreLoginScreenState extends State<StoreLoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +30,7 @@ class _CompanyLoginScreenState extends State<CompanyLoginScreen> {
                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                     HeadingAndSubheading(heading: AppTexts.welcome, subHeading: AppTexts.welcomeBackSubText),
-                    SmivoxInputFields(hintText: AppTexts.companyEmailLabel, leadingIcon: Icon(Icons.mail_outline_rounded, color: AppColors.inactiveGrey)),
+                    SmivoxInputFields(hintText: AppTexts.storeEmailLabel, leadingIcon: Icon(Icons.mail_outline_rounded, color: AppColors.inactiveGrey)),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     spacing: 4,
@@ -52,9 +52,9 @@ class _CompanyLoginScreenState extends State<CompanyLoginScreen> {
                     spacing: 5,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CommonMethods.appTexts(context, "Don't have a ${AppTexts.companyName} account?", fontSize: 14),
+                      CommonMethods.appTexts(context, "Don't have a ${AppTexts.storeName} account?", fontSize: 14),
                       GestureDetector(
-                         onTap: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.companyRegistrationScreen),
+                         onTap: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.storeRegistrationScreen),
                         child: CommonMethods.appTexts(context, "Create an account", color: Color(0xFF0311D7), fontWeight: FontWeight.w500),
                       )
                     ],

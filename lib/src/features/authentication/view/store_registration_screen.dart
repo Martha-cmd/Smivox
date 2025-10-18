@@ -17,24 +17,24 @@ import '../components/heading_and_subheading.dart';
 import '../../../commons/country_selection_dialog.dart';
 import '../../../commons/state_selection_dialog.dart';
 
-class CompanyRegistrationScreen extends StatefulWidget {
-  const CompanyRegistrationScreen({super.key});
+class StoreRegistrationScreen extends StatefulWidget {
+  const StoreRegistrationScreen({super.key});
 
   @override
-  State<CompanyRegistrationScreen> createState() =>
-      _CompanyRegistrationScreenState();
+  State<StoreRegistrationScreen> createState() =>
+      _StoreRegistrationScreenState();
 }
 
-class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
-  final TextEditingController companyNameController = TextEditingController();
-  final TextEditingController companyEmailAddressController =
-      TextEditingController();
-  final TextEditingController companyCountryController =
-      TextEditingController();
-  final TextEditingController companyStateController = TextEditingController();
-  final TextEditingController companyCityController = TextEditingController();
-  final TextEditingController natureOfBusinessController =
-      TextEditingController();
+class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
+  final TextEditingController storeNameController = TextEditingController();
+  final TextEditingController storeEmailAddressController = TextEditingController();
+  final TextEditingController storeCountryController = TextEditingController();
+  final TextEditingController storeStateController = TextEditingController();
+  final TextEditingController storeCityController = TextEditingController();
+  final TextEditingController natureOfBusinessController = TextEditingController();
+  final TextEditingController storeAddressController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   List<CountryModel> _countries = [];
   CountryModel? _selectedCountry;
@@ -102,14 +102,15 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                 Image.asset("assets/logo/logo.png", width: 100),
                 HeadingAndSubheading(
                   heading: AppTexts.welcomeToSmivox,
-                  subHeading: AppTexts.subtextCompanyReg,
+                  subHeading: AppTexts.subtextStoreNameReg,
                 ),
                 const SizedBox(height: 1),
                 Column(
                   spacing: 20,
                   children: [
+
                     SmivoxInputFields(
-                      headText: AppTexts.companyNameLabel,
+                      headText: AppTexts.storeNameLabel,
                       headFontWeight: FontWeight.normal,
                       labelColor: Colors.black,
                       hintText: "Market Square",
@@ -117,19 +118,23 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                         "assets/onboarding/briefcase.svg",
                         width: 18,
                       ),
-                      controller: companyNameController,
+                      controller: storeNameController,
                     ),
+
+
                     SmivoxInputFields(
-                      headText: AppTexts.companyEmailLabel,
+                      headText: AppTexts.storeEmailLabel,
                       headFontWeight: FontWeight.normal,
                       labelColor: Colors.black,
                       hintText: "supermarkt@gmail.com",
                       leadingIcon: SvgPicture.asset(
-                        "assets/onboarding/gmail.svg",
+                        "assets/onboarding/mail.svg",
                         width: 18,
                       ),
-                      controller: companyEmailAddressController,
+                      controller: storeEmailAddressController,
                     ),
+
+
                     GestureDetector(
                       onTap: _showCountrySelection,
                       child: AbsorbPointer(
@@ -147,11 +152,13 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                               "assets/onboarding/globe.svg",
                               width: 18,
                             ),
-                          controller: companyCountryController,
+                          controller: storeCountryController,
                           suffixIcon: Icon(CupertinoIcons.chevron_down, size: 15),
                         ),
                       ),
                     ),
+
+
                     GestureDetector(
                       onTap: _showStateSelection,
                       child: AbsorbPointer(
@@ -160,40 +167,47 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                           headFontWeight: FontWeight.normal,
                           hintText: "Select your state",
                           leadingIcon: SvgPicture.asset("assets/onboarding/map-location.svg", width: 18),
-                          controller: companyStateController,
+                          controller: storeStateController,
                           suffixIcon: Icon(CupertinoIcons.chevron_down, size: 15),
                         ),
                       ),
                     ),
+
+
                     SmivoxInputFields(
                       headText: AppTexts.city,
                       headFontWeight: FontWeight.normal,
                       labelColor: Colors.black,
-                      hintText: "enter your city",
+                      hintText: "Enter your city",
                       leadingIcon: SvgPicture.asset(
                         "assets/onboarding/pin.svg",
                         width: 18,
                       ),
                       // suffixIcon: Icon(CupertinoIcons.chevron_down, size: 15),
-                      controller: companyCityController,
+                      controller: storeCityController,
                     ),
+
+
                     SmivoxInputFields(
                       headText: AppTexts.address,
                       headFontWeight: FontWeight.normal,
                       labelColor: Colors.black,
-                      hintText: AppTexts.companyAddress,
-                      leadingIcon: Icon(Icons.house_outlined,
-                        color: AppColors.inactiveGrey,
+                      hintText: AppTexts.storeAddress,
+                      leadingIcon: SvgPicture.asset(
+                        "assets/onboarding/home-input-icon.svg",
+                        width: 18,
                       ),
-                      controller: companyEmailAddressController,
+                      controller: storeAddressController,
                     ),
+
+
                     SmivoxInputFields(
                       headText: AppTexts.natureOfBusiness,
                       headFontWeight: FontWeight.normal,
                       labelColor: Colors.black,
                       hintText: "Choose nature of business",
                       leadingIcon: SvgPicture.asset(
-                        "assets/onboarding/home-input-icon.svg",
+                        "assets/onboarding/dashboard.svg",
                         width: 18,
                       ),
                       suffixIcon: Icon(CupertinoIcons.chevron_down, size: 15),
@@ -205,7 +219,35 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                       },
                     ),
 
+
+                    SmivoxInputFields(
+                      headText: AppTexts.password,
+                      headFontWeight: FontWeight.normal,
+                      labelColor: Colors.black,
+                      hintText: "Create store password",
+                      leadingIcon: SvgPicture.asset(
+                        "assets/onboarding/lock.svg",
+                        width: 18,
+                      ),
+                      controller: passwordController,
+                    ),
+
+
+                    SmivoxInputFields(
+                      headText: AppTexts.confirmPassword,
+                      headFontWeight: FontWeight.normal,
+                      labelColor: Colors.black,
+                      hintText: "Confirm store password",
+                      leadingIcon: SvgPicture.asset(
+                        "assets/onboarding/lock.svg",
+                        width: 18,
+                      ),
+                      controller: confirmPasswordController,
+                    ),
+
                     SizedBox(height: 10),
+
+
                     SmivoxButton(
                       text: "Continue",
                       onTap:
@@ -214,20 +256,22 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                             RoutesPath.personalDetailsScreen,
                           ),
                     ),
+
+
                     Row(
                       spacing: 5,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CommonMethods.appTexts(
                           context,
-                          "Already have a ${AppTexts.companyName} account?",
+                          "Already have a ${AppTexts.storeName} account?",
                           fontSize: 14,
                         ),
                         GestureDetector(
                           onTap:
                               () => CommonMethods.replaceWithNextScreen(
                                 context,
-                                RoutesPath.companyLoginScreen,
+                                RoutesPath.storeLoginScreen,
                               ),
                           child: CommonMethods.appTexts(
                             context,
@@ -238,6 +282,8 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
                         ),
                       ],
                     ),
+
+
                     SizedBox(height: 40),
                   ],
                 ),
@@ -272,7 +318,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
     if (selected != null) {
       setState(() {
         _selectedCountry = selected;
-        companyCountryController.text = selected.name;
+        storeCountryController.text = selected.name;
       });
 
       // Load states for the selected country
@@ -289,13 +335,13 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
       context: context,
       builder: (context) => StateSelectionDialog(
         states: _states,
-        selectedState: companyStateController.text,
+        selectedState: storeStateController.text,
       ),
     );
 
     if (selected != null) {
       setState(() {
-        companyStateController.text = selected.name;
+        storeStateController.text = selected.name;
       });
       print("Selected state: ${selected.name}, Code: ${selected.stateCode}");
     }
@@ -305,7 +351,7 @@ class _CompanyRegistrationScreenState extends State<CompanyRegistrationScreen> {
     setState(() {
       _isLoadingStates = true;
       _states = [];
-      companyStateController.clear(); // Clear previous state selection
+      storeStateController.clear();
     });
 
     try {

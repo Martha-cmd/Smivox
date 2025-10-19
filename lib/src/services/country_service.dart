@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
-import '../model/country_model.dart';
+import '../features/model/country_model.dart';
 
 
 

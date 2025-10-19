@@ -17,7 +17,7 @@ class AppTexts {
   static const alreadyHaveAnAccount = "Already have an account?";
   static const login = "Login";
   static const password = "Password";
-  static const confirmPassword = "ConfirmPassword";
+  static const confirmPassword = "Confirm Password";
 
   /// Personal Details
   static const enterPersonalDetails = "Enter your personal details";

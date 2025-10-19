@@ -4,14 +4,14 @@ part 'responses.g.dart';
 
 @JsonSerializable()
 class Responses {
-    bool? success;
+    bool success;
     final int statusCode;
     String? message;
     final dynamic data;
     String? action;
 
     Responses({
-      this.success,
+      required this.success,
       this.message,
       this.data,
       this.action,

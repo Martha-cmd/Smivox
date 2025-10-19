@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
       title: 'Smivox',
       theme: AppTheme.getLightTheme(context),
       darkTheme: AppTheme.getDarkTheme(context),
-      initialRoute: RoutesPath.splashScreen,
+      // initialRoute: RoutesPath.splashScreen,
       routes: RoutesPath.routes,
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const SplashScreen(),
     );
   }
 }

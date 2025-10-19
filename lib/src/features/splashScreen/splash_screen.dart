@@ -1,8 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:smivox_inventory_software/src/commons/common_methods.dart';
-
+import '../../core/storage/storage_manager.dart';
 import '../../utils/route_path.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 10), () {
-       CommonMethods.replaceWithNextScreen(context, RoutesPath.firstOnboardingScreen);
+       _navigateToNextScreen();
     });
     super.initState();
   }
@@ -39,5 +38,31 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
+  }
+
+  void _navigateToNextScreen() {
+    final hasSeenOnboarding = StorageManager.getHasSeenOnboarding();
+    final currentStep = StorageManager.getCurrentStep();
+
+    if (hasSeenOnboarding == false) {
+      CommonMethods.replaceWithNextScreen(context, RoutesPath.firstOnboardingScreen);
+      return;
+    }
+
+    // Returning user - check where they left off
+    switch (currentStep) {
+      case '/store-registration':
+        CommonMethods.replaceWithNextScreen(context, RoutesPath.storeRegistrationScreen);
+        break;
+      case '/personal-details':
+        CommonMethods.replaceWithNextScreen(context, RoutesPath.personalDetailsScreen);
+        break;
+      case '/dashboard':
+        CommonMethods.replaceWithNextScreen(context, RoutesPath.bottomBar);
+        break;
+      default:
+      // If no current step is set, default to store registration
+        CommonMethods.replaceWithNextScreen(context, RoutesPath.storeRegistrationScreen);
+    }
   }
 }

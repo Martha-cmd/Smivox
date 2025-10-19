@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smivox_inventory_software/src/commons/common_methods.dart';
+import 'package:smivox_inventory_software/src/core/storage/storage_manager.dart';
 import 'package:smivox_inventory_software/src/utils/route_path.dart';
 import 'components/onboarding_component.dart';
 
@@ -20,7 +21,11 @@ class ThirdOnboardingScreen extends StatelessWidget {
           currentIndex: 2,
           totalPages: 3,
           btnText: "Get Started",
-          onTap: () => CommonMethods.replaceWithNextScreen(context, RoutesPath.storeRegistrationScreen),
+          onTap: () async {
+            await StorageManager.setHasSeenOnboarding(true);
+            await StorageManager.setCurrentStep('/store-registration');
+            CommonMethods.replaceWithNextScreen(context, RoutesPath.storeRegistrationScreen);
+          },
           hasIcon: false,
         ),
       ),

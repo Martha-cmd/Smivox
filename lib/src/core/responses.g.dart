@@ -7,7 +7,7 @@ part of 'responses.dart';
 // **************************************************************************
 
 Responses _$ResponsesFromJson(Map<String, dynamic> json) => Responses(
-  success: json['success'] as bool?,
+  success: json['success'] as bool,
   message: json['message'] as String?,
   data: json['data'],
   action: json['action'] as String?,

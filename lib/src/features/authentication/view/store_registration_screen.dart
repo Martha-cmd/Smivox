@@ -4,15 +4,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smivox_inventory_software/src/commons/app_colors.dart';
 import 'package:smivox_inventory_software/src/commons/common_methods.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_button.dart';
 import 'package:smivox_inventory_software/src/commons/smivox_input_fields.dart';
+import 'package:smivox_inventory_software/src/core/responses.dart';
+import 'package:smivox_inventory_software/src/core/storage/storage_manager.dart';
+import 'package:smivox_inventory_software/src/features/authentication/model/store/store_registration_model.dart';
+import 'package:smivox_inventory_software/src/features/authentication/repository/auth_repository.dart';
 import 'package:smivox_inventory_software/src/res/app_strings.dart';
+import 'package:smivox_inventory_software/src/services/api_service.dart';
 import 'package:smivox_inventory_software/src/utils/route_path.dart';
 import '../../model/country_model.dart';
 import '../../model/state_model.dart';
-import '../../service/state_service.dart';
+import '../../../services/state_service.dart';
 import '../components/heading_and_subheading.dart';
 import '../../../commons/country_selection_dialog.dart';
 import '../../../commons/state_selection_dialog.dart';
@@ -42,10 +46,30 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
   bool _isLoadingStates = false;
   List<String> _businessTypes = [];
   bool _isLoadingBusinessTypes = false;
+  bool _isButtonEnabled = false;
+  String? _errorMessage;
+  bool _isRegistering = false;
+  late final AuthRepository _authRepository;
 
   @override
   void initState() {
     super.initState();
+    _authRepository = AuthRepository(ApiService());
+
+    [
+      storeNameController,
+      storeEmailAddressController,
+      storeCountryController,
+      storeStateController,
+      storeCityController,
+      natureOfBusinessController,
+      storeAddressController,
+      passwordController,
+      confirmPasswordController,
+    ].forEach((controller) {
+      controller.addListener(_validateForm);
+    });
+
     loadCountries(context).then((list) {
       setState(() {
         _countries = list;
@@ -54,38 +78,12 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
 
     _preloadAllCountriesStates();
     _loadBusinessTypes();
-  }
 
-  Future<void> _preloadAllCountriesStates() async {
-    try {
-      await StateService.getAllCountriesStates();
-    } catch (e) {
-      print('Error preloading states: $e');
-    }
-  }
-
-  Future<void> _loadBusinessTypes() async {
-    setState(() {
-        _isLoadingBusinessTypes = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _validateForm();
     });
-
-      try {
-           final String response = await rootBundle.loadString("assets/data/nature_of_business.json");
-           final Map<String, dynamic> data = json.decode(response);
-           final List<dynamic> natures = data['natures'] ?? [];
-
-           setState(() {
-              _businessTypes = natures.map<String>((item) => item.toString()).toList();
-              _isLoadingBusinessTypes = false;
-           });
-      } catch (e) {
-          setState(() {
-             _isLoadingBusinessTypes = false;
-             _businessTypes = [];
-          });
-          log('Error loading business types: $e');
-      }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -216,7 +214,9 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
                       dropdownItems: _businessTypes,
                       onDropdownItemSelected: (value) {
                         natureOfBusinessController.text = value;
+                        _validateForm();
                       },
+
                     ),
 
 
@@ -225,6 +225,7 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
                       headFontWeight: FontWeight.normal,
                       labelColor: Colors.black,
                       hintText: "Create store password",
+                      obscureText: true,
                       leadingIcon: SvgPicture.asset(
                         "assets/onboarding/lock.svg",
                         width: 18,
@@ -238,6 +239,7 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
                       headFontWeight: FontWeight.normal,
                       labelColor: Colors.black,
                       hintText: "Confirm store password",
+                      obscureText: true,
                       leadingIcon: SvgPicture.asset(
                         "assets/onboarding/lock.svg",
                         width: 18,
@@ -245,16 +247,44 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
                       controller: confirmPasswordController,
                     ),
 
+
+
+                    if (_errorMessage != null)
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.red[50],
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.red[200]!),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(Icons.error_outline, color: Colors.red, size: 16),
+                            SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                _errorMessage!,
+                                style: TextStyle(
+                                  color: Colors.red[700],
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
                     SizedBox(height: 10),
 
-
-                    SmivoxButton(
-                      text: "Continue",
-                      onTap:
-                          () => CommonMethods.replaceWithNextScreen(
-                            context,
-                            RoutesPath.personalDetailsScreen,
-                          ),
+                    IgnorePointer(
+                      ignoring: !_isButtonEnabled || _isRegistering,
+                      child: SmivoxButton(
+                        text: "Continue",
+                        color: _isButtonEnabled ? null : Colors.grey,
+                        isLoading: _isRegistering,
+                        onTap: _registerStore,
+                      ),
                     ),
 
 
@@ -295,6 +325,169 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
     );
   }
 
+  Future<void> _preloadAllCountriesStates() async {
+    try {
+      await StateService.getAllCountriesStates();
+    } catch (e) {
+      print('Error preloading states: $e');
+    }
+  }
+
+  Future<void> _loadBusinessTypes() async {
+    setState(() {
+      _isLoadingBusinessTypes = true;
+    });
+
+    try {
+      final String response = await rootBundle.loadString("assets/data/nature_of_business.json");
+      final Map<String, dynamic> data = json.decode(response);
+      final List<dynamic> natures = data['natures'] ?? [];
+
+      setState(() {
+        _businessTypes = natures.map<String>((item) => item.toString()).toList();
+        _isLoadingBusinessTypes = false;
+      });
+
+      _validateForm();
+    } catch (e) {
+      setState(() {
+        _isLoadingBusinessTypes = false;
+        _businessTypes = [];
+      });
+      log('Error loading business types: $e');
+    }
+  }
+
+  Future<void> _registerStore () async {
+      if (_isRegistering) return;
+
+      if (!_isButtonEnabled) return;
+
+      final name = storeNameController.text.trim();
+      final email = storeEmailAddressController.text.trim();
+      final country = storeCountryController.text.trim();
+      final state = storeStateController.text.trim();
+      final city = storeCityController.text.trim();
+      final address = storeAddressController.text.trim();
+      final nature = natureOfBusinessController.text.trim();
+      final password = passwordController.text.trim();
+      final confirmPassword = confirmPasswordController.text.trim();
+
+      if (name.isEmpty ||
+          email.isEmpty ||
+          country.isEmpty ||
+          state.isEmpty ||
+          city.isEmpty ||
+          address.isEmpty ||
+          nature.isEmpty ||
+          password.isEmpty ||
+          confirmPassword.isEmpty) {
+        CommonMethods.showSnackBar(context: context, message: "Please fill all fields");
+        return;
+      }
+
+      if (password != confirmPassword) {
+        CommonMethods.showError(context: context, message: "Passwords do not match");
+        return;
+      }
+
+      final model = StoreRegistrationModel(
+        companyName: name,
+        businessEmail: email,
+        password: password,
+        country: country,
+        state: state,
+        city: city,
+        address: address,
+        businessNature: nature,
+        confirmPassword: confirmPassword,
+      );
+
+      setState(() => _isRegistering = true);
+
+      try {
+         final Responses response = await _authRepository.registerStore(model);
+
+         if (response.success) {
+           final Map<String, dynamic> storeData = response.data ?? {};
+
+           await StorageManager.clearStoreData();
+
+           await StorageManager.saveStoreData(storeData);
+
+            CommonMethods.showSuccess(context: context, message: response.message ?? "Store registration Successful");
+            await StorageManager.setCurrentStep('/personal-details');
+            CommonMethods.replaceWithNextScreen(context, RoutesPath.personalDetailsScreen);
+         } else {
+            CommonMethods.showError(context: context, message: response.message ?? "Store registration failed");
+         }
+      }catch (e) {
+          CommonMethods.showError(context: context, message: "Error registration failed");
+          log("Error: $e");
+      } finally {
+          setState(() => _isRegistering = false);
+      }
+
+  }
+
+  void _validateForm() {
+    log('=== VALIDATE FORM TRIGGERED ===');
+    final fields = [
+      storeNameController.text.trim(),
+      storeEmailAddressController.text.trim(),
+      storeCountryController.text.trim(),
+      storeStateController.text.trim(),
+      storeCityController.text.trim(),
+      natureOfBusinessController.text.trim(),
+      storeAddressController.text.trim(),
+      passwordController.text.trim(),
+      confirmPasswordController.text.trim(),
+    ];
+
+    // Check if any field is empty
+    if (fields.any((field) => field.isEmpty)) {
+      setState(() {
+        _isButtonEnabled = false;
+        _errorMessage = "Please fill in all fields";
+      });
+      return;
+    }
+
+    // Validate email format
+    final emailRegex = RegExp(r'^[^\s@]+@[^\s@]+\.[^\s@]+$');
+    if (!emailRegex.hasMatch(storeEmailAddressController.text.trim())) {
+      setState(() {
+        _isButtonEnabled = false;
+        _errorMessage = "Please enter a valid email address";
+      });
+      return;
+    }
+
+    // Validate password match
+    if (passwordController.text != confirmPasswordController.text) {
+      setState(() {
+        _isButtonEnabled = false;
+        _errorMessage = "Passwords do not match";
+      });
+      return;
+    }
+
+    // Validate password length
+    if (passwordController.text.length < 6) {
+      setState(() {
+        _isButtonEnabled = false;
+        _errorMessage = "Password must be at least 6 characters";
+      });
+      return;
+    }
+
+    // If all validations pass
+    setState(() {
+      _isButtonEnabled = true;
+      _errorMessage = null;
+    });
+  }
+
   Future<List<CountryModel>> loadCountries(BuildContext context) async {
     final String response = await DefaultAssetBundle.of(context)
         .loadString('assets/data/locations.json');
@@ -324,6 +517,8 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
       // Load states for the selected country
       await _loadStatesForCountry(selected.code);
 
+      _validateForm();
+
       print("Selected: ${selected.name}, Code: ${selected.code}");
     }
   }
@@ -343,6 +538,9 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
       setState(() {
         storeStateController.text = selected.name;
       });
+
+      _validateForm();
+
       print("Selected state: ${selected.name}, Code: ${selected.stateCode}");
     }
   }
@@ -361,6 +559,7 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
         _states = states;
         _isLoadingStates = false;
       });
+      _validateForm();
     } catch (e) {
       setState(() {
         _isLoadingStates = false;
@@ -369,4 +568,20 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen> {
       print('Error loading states for $countryCode: $e');
     }
   }
+
+  @override
+  void dispose() {
+    storeNameController.dispose();
+    storeEmailAddressController.dispose();
+    storeCountryController.dispose();
+    storeStateController.dispose();
+    storeCityController.dispose();
+    natureOfBusinessController.dispose();
+    storeAddressController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+
 }

@@ -26,7 +26,7 @@ class StoreRegistrationModel {
       required this.city,
       required this.businessNature,
       required this.address,
-      required this.currency,
+      this.currency,
       this.otherDetails,
       this.profilePicture,
       required this.password,

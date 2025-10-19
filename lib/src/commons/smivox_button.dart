@@ -27,8 +27,9 @@ class SmivoxButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final buttonColor = color ?? AppColors.primary;
-    final colorText = textColor ?? AppColors.white;
+    final isDisabled = onTap == null;
+    final buttonColor = color ?? (isDisabled ? Colors.grey : AppColors.primary);
+    final colorText = textColor ?? (isDisabled ? AppColors.lightGrey : AppColors.white);
 
     return GestureDetector(
       onTap: isLoading ? null : onTap,
@@ -44,7 +45,7 @@ class SmivoxButton extends StatelessWidget {
           spacing: 5,
           children: [
             isLoading
-                ? const SpinnerView()
+                ? SizedBox(height: 20, width: 20, child: const SpinnerView( color: Colors.white, bgColor: Colors.transparent,))
                 : CommonMethods.appTexts(
                   context,
                   text!,

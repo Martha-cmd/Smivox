@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../model/state_model.dart';
+import '../features/model/state_model.dart';
 
 
 class StateService {

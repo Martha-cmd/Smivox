@@ -54,4 +54,32 @@ class AuthRepository {
         }
   }
 
+  Future<Responses> storeLogin({required String businessEmail, required String password}) async {
+      try {
+         final body = {
+            'businessEmail': businessEmail,
+            'password': password,
+         };
+
+         final response = await _apiService.postRequest(
+             EndPoints.storeLogin,
+             body: body,
+             requiresAuth: false,
+         );
+
+         return Responses(
+           success: response.success,
+           message: response.message,
+           statusCode: response.statusCode,
+           data: response.data ?? {},
+         );
+      } catch (e) {
+        return Responses(
+            success: false,
+            message: e.toString(),
+            statusCode: 500
+        );
+      }
+  }
+
 }

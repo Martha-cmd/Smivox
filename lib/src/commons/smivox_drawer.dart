@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:smivox_inventory_software/src/core/storage/storage_manager.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/add_category_dialog.dart';
 import 'package:smivox_inventory_software/src/features/inventory/view/add_product_dialog.dart';
 import 'package:smivox_inventory_software/src/utils/route_path.dart';
@@ -166,7 +167,10 @@ class _SmivoxDrawerState extends State<SmivoxDrawer> {
           ListTile(
             leading: SvgPicture.asset("assets/drawer/logout 01.svg", width: 20),
             title: CommonMethods.appTexts(context, "Log out", color: AppColors.error, fontWeight: FontWeight.w600),
-            onTap: () => CommonMethods.sendToNextScreen(context, RoutesPath.genLoginScreen),
+            onTap: () async {
+              await StorageManager.setCurrentStep("/login");
+              CommonMethods.sendToNextScreen(context, RoutesPath.genLoginScreen);
+            }
 
           ),
         ],

@@ -14,12 +14,12 @@ import 'package:smivox_inventory_software/src/features/authentication/repository
 import 'package:smivox_inventory_software/src/res/app_strings.dart';
 import 'package:smivox_inventory_software/src/services/api_service.dart';
 import 'package:smivox_inventory_software/src/utils/route_path.dart';
-import '../../model/country_model.dart';
-import '../../model/state_model.dart';
-import '../../../services/state_service.dart';
-import '../components/heading_and_subheading.dart';
-import '../../../commons/country_selection_dialog.dart';
-import '../../../commons/state_selection_dialog.dart';
+import '../../../model/country_model.dart';
+import '../../../model/state_model.dart';
+import '../../../../services/state_service.dart';
+import '../../components/heading_and_subheading.dart';
+import '../../../../commons/country_selection_dialog.dart';
+import '../../../../commons/state_selection_dialog.dart';
 
 class StoreRegistrationScreen extends StatefulWidget {
   const StoreRegistrationScreen({super.key});

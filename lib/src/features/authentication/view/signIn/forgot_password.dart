@@ -6,8 +6,8 @@ import 'package:smivox_inventory_software/src/features/authentication/components
 import 'package:smivox_inventory_software/src/res/app_strings.dart';
 import 'package:smivox_inventory_software/src/utils/route_path.dart';
 
-import '../../../commons/app_colors.dart';
-import '../../../commons/common_methods.dart';
+import '../../../../commons/app_colors.dart';
+import '../../../../commons/common_methods.dart';
 
 
 

@@ -58,33 +58,12 @@ class ApiService {
     return e.message ?? 'Network error';
   }
 
-  // Responses _processResponse(Response response, {String? endpoint}) {
-  //   final statusCode = response.statusCode ?? 500;
-  //   final success = statusCode >= 200 && statusCode < 300;
-  //
-  //   final responseData = response.data;
-  //   final data = responseData is Map<String, dynamic>
-  //       ? (responseData['data'] ?? responseData)
-  //       : {};
-  //
-  //   log('Processed API response for $endpoint → $data');
-  //
-  //   return Responses(
-  //     success: success,
-  //     message: (responseData is Map && responseData['message'] != null)
-  //         ? responseData['message']
-  //         : 'Success',
-  //     data: response.data['data'],
-  //     statusCode: statusCode,
-  //   );
-  // }
   Responses _processResponse(Response response, {String? endpoint}) {
     final statusCode = response.statusCode ?? 500;
     final success = statusCode >= 200 && statusCode < 300;
 
     final responseData = response.data;
 
-    // Ensure it's a Map<String, dynamic>
     final Map<String, dynamic> parsedData =
     responseData is Map ? Map<String, dynamic>.from(responseData) : {};
 

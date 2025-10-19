@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:smivox_inventory_software/src/features/POS/view/empty_pos_screen.dart';
 import 'package:smivox_inventory_software/src/features/SUPERVISOR/screens/bottomBar/bottomBar.dart';
-import 'package:smivox_inventory_software/src/features/authentication/view/store_registration_screen.dart';
-import 'package:smivox_inventory_software/src/features/authentication/view/forgot_password.dart';
-import 'package:smivox_inventory_software/src/features/authentication/view/personal_details.dart';
-import 'package:smivox_inventory_software/src/features/authentication/view/reset_password.dart';
+import 'package:smivox_inventory_software/src/features/authentication/view/register/store_registration_screen.dart';
+import 'package:smivox_inventory_software/src/features/authentication/view/signIn/forgot_password.dart';
+import 'package:smivox_inventory_software/src/features/authentication/view/register/personal_details.dart';
+import 'package:smivox_inventory_software/src/features/authentication/view/signIn/reset_password.dart';
 import 'package:smivox_inventory_software/src/features/authentication/view/signIn/store_login_screen.dart';
 import 'package:smivox_inventory_software/src/features/authentication/view/signIn/gen_login_screen.dart';
 import 'package:smivox_inventory_software/src/features/authentication/view/verifications/check_email_screen.dart';

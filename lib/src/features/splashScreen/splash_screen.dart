@@ -60,6 +60,12 @@ class _SplashScreenState extends State<SplashScreen> {
       case '/dashboard':
         CommonMethods.replaceWithNextScreen(context, RoutesPath.bottomBar);
         break;
+      case '/login':
+        CommonMethods.replaceWithNextScreen(context, RoutesPath.storeLoginScreen);
+        break;
+      case '/genLogin':
+        CommonMethods.replaceWithNextScreen(context, RoutesPath.genLoginScreen);
+        break;
       default:
       // If no current step is set, default to store registration
         CommonMethods.replaceWithNextScreen(context, RoutesPath.storeRegistrationScreen);

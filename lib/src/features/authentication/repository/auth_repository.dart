@@ -82,4 +82,60 @@ class AuthRepository {
       }
   }
 
+  Future<Responses> userLogin({required String role, required String email, required String password}) async {
+      try {
+          final body = {
+            "role": role,
+            "email": email,
+            "password": password,
+          };
+
+          final response = await _apiService.postRequest(
+              EndPoints.userLogin,
+              body: body,
+              requiresAuth: false,
+          );
+
+          return Responses(
+              success: response.success,
+              statusCode: response.statusCode,
+            message: response.message,
+            data: response.data ?? {}
+          );
+      } catch (e) {
+          return Responses(
+              success: false,
+              statusCode: 500,
+              message: e.toString(),
+          );
+      }
+  }
+
+  Future<Responses> forgotPassword({required String email}) async {
+      try {
+          final body = {
+            "email": email,
+          };
+
+          final response = await _apiService.postRequest(
+              EndPoints.forgotPassword,
+              body: body,
+              requiresAuth: false,
+          );
+
+          return Responses(
+              success: response.success,
+              statusCode: response.statusCode,
+            message: response.message,
+            data: response.data ?? {}
+          );
+      } catch (e) {
+          return Responses(
+              success: false,
+              statusCode: 500,
+              message: e.toString(),
+          );
+      }
+  }
+
 }

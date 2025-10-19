@@ -8,6 +8,8 @@ import 'package:smivox_inventory_software/src/features/authentication/model/stor
 class StorageManager {
   static String get _tokenKey => dotenv.get('TOKEN_KEY');
   static String get _refreshTokenKey => dotenv.get('REFRESH_TOKEN_KEY');
+  static String get _userTokenKey => dotenv.get('USER_TOKEN_KEY');
+  static String get _userRefreshTokenKey => dotenv.get('USER_REFRESH_TOKEN_KEY');
   static const String _storeDataKey = "STORE_DATA";
   static const String _userDataKey = "USER_DATA";
   static const String _hasSeenOnboardingKey = "HAS_SEEN_ONBOARDING";
@@ -35,10 +37,30 @@ class StorageManager {
     return token;
   }
 
+  static String? getUserAccessToken() {
+    final token = _prefs.getString(_userTokenKey);
+    if (token == null) {
+      log('Access Token: NULL (key: $_userTokenKey)');
+    } else {
+      log('Access Token: Present (length: ${token.length})');
+    }
+    return token;
+  }
+
   static String? getRefreshToken() {
     final token = _prefs.getString(_refreshTokenKey);
     if (token == null) {
       log('Refresh Token: NULL (key: $_refreshTokenKey)');
+    } else {
+      log('Refresh Token: Present (length: ${token.length})');
+    }
+    return token;
+  }
+
+  static String? getUserRefreshToken() {
+    final token = _prefs.getString(_userRefreshTokenKey);
+    if (token == null) {
+      log('Refresh Token: NULL (key: $_userRefreshTokenKey)');
     } else {
       log('Refresh Token: Present (length: ${token.length})');
     }
@@ -66,6 +88,27 @@ class StorageManager {
     }
   }
 
+  static Future<bool> saveUserAccessToken(String accessToken) async {
+    try {
+      final success = await _prefs.setString(_userTokenKey, accessToken);
+      if (success) {
+        log('Access token saved successfully (length: ${accessToken.length})');
+        final savedToken = getUserAccessToken();
+        if (savedToken == accessToken) {
+          log('Access token verified in storage');
+        } else {
+          log('Access token verification FAILED - storage issue');
+        }
+      } else {
+        log('Failed to save access token to storage');
+      }
+      return success;
+    } catch (e) {
+      log('Error saving access token: $e');
+      return false;
+    }
+  }
+
   static Future<bool> saveRefreshToken(String refreshToken) async {
     try {
       final success = await _prefs.setString(_refreshTokenKey, refreshToken);
@@ -73,6 +116,27 @@ class StorageManager {
         log('Refresh token saved successfully (length: ${refreshToken.length})');
         final savedToken = getRefreshToken();
         if (savedToken == refreshToken) {
+          log('Refresh token verified in storage');
+        } else {
+          log('Refresh token verification FAILED - storage issue');
+        }
+      } else {
+        log('Failed to save refresh token to storage');
+      }
+      return success;
+    } catch (e) {
+      log('Error saving refresh token: $e');
+      return false;
+    }
+  }
+
+  static Future<bool> saveUserRefreshToken(String userRefreshToken) async {
+    try {
+      final success = await _prefs.setString(_userRefreshTokenKey, userRefreshToken);
+      if (success) {
+        log('Refresh token saved successfully (length: ${userRefreshToken.length})');
+        final savedToken = getUserRefreshToken();
+        if (savedToken == userRefreshToken) {
           log('Refresh token verified in storage');
         } else {
           log('Refresh token verification FAILED - storage issue');

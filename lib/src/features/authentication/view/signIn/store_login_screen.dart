@@ -33,7 +33,6 @@ class _StoreLoginScreenState extends State<StoreLoginScreen> {
   @override
   void initState() {
     super.initState();
-    // _authRepository = AuthRepository(ApiService());
     _validateForm();
 
     storeEmailController.addListener(_validateForm);

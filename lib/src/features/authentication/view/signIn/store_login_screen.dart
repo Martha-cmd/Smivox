@@ -44,7 +44,7 @@ class _StoreLoginScreenState extends State<StoreLoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: Padding(
+          child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               spacing: 20,
@@ -138,25 +138,35 @@ class _StoreLoginScreenState extends State<StoreLoginScreen> {
                   spacing: 5,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CommonMethods.appTexts(
-                      context,
-                      "Don't have a ${AppTexts.storeName} account?",
-                      fontSize: 14,
-                    ),
-                    GestureDetector(
-                      onTap:
-                          () =>
-                          CommonMethods.replaceWithNextScreen(
+                   Expanded(
+                     child: Wrap(
+                       alignment: WrapAlignment.center,
+                       crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          CommonMethods.appTexts(
                             context,
-                            RoutesPath.storeRegistrationScreen,
+                            "Don't have a ${AppTexts.storeName} account?",
+                            fontSize: 14,
                           ),
-                      child: CommonMethods.appTexts(
-                        context,
-                        "Create an account",
-                        color: Color(0xFF0311D7),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                          GestureDetector(
+                            onTap:
+                                () =>
+                                CommonMethods.sendToNextScreen(
+                                  context,
+                                  RoutesPath.storeRegistrationScreen,
+                                ),
+                            child: CommonMethods.appTexts(
+                                context,
+                                "Create an account",
+                                color: Color(0xFF0311D7),
+                                fontWeight: FontWeight.w500,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis
+                            ),
+                          ),
+                        ],
+                     ),
+                   )
                   ],
                 ),
               ],
